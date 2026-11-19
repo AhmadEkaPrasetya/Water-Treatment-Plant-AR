@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/WTP/Scenes/MainMenu.unity
+    guid: 600bb88d780ba2840ad9f3a9feffc59e
+  - enabled: 1
     path: Assets/WTP/Scenes/ARPlay.unity
     guid: f0b694b1d025e834997c16a373e56e5d
   m_configObjects:
