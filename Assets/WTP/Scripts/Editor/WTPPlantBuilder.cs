@@ -5,6 +5,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.Rendering;
 using WTP.AR;
+using WTP.Plant;
 
 namespace WTP.EditorTools
 {
@@ -69,13 +70,13 @@ namespace WTP.EditorTools
                 if (changed) importer.SaveAndReimport();
             }
 
-            // 2. Material yang perlu tembus pandang.
-            MakeTransparent(LoadMat("Water"), smoothness: 0.9f);
+            // 2. Air pakai shader buatan sendiri WTP/Water (keruh <-> jernih), kaca dibuat tembus pandang.
+            UseWaterShader(LoadMat("Water"), clarity: 1f);
             MakeTransparent(LoadMat("Glass"), smoothness: 0.95f);
 
             // 3. Material tambahan yang tidak ada di FBX.
             GetOrCreateMat("Ground", new Color(0.47f, 0.62f, 0.38f));
-            MakeTransparent(GetOrCreateMat("RiverWater", new Color(0.45f, 0.38f, 0.26f, 0.85f)), smoothness: 0.8f); // sungai keruh
+            UseWaterShader(GetOrCreateMat("RiverWater", Color.white), clarity: 0.05f); // sungai tercemar abu karhutla
             var window = GetOrCreateMat("Window", new Color(0.25f, 0.27f, 0.32f));
             window.SetColor("_EmissionColor", Color.black); // nanti dinyalakan oleh CityLights
 
@@ -94,6 +95,17 @@ namespace WTP.EditorTools
             mat.SetFloat("_Smoothness", 0.2f);
             AssetDatabase.CreateAsset(mat, $"{MaterialFolder}/{name}.mat");
             return mat;
+        }
+
+        static void UseWaterShader(Material mat, float clarity)
+        {
+            if (mat == null) return;
+            mat.shader = Shader.Find("WTP/Water");
+            mat.SetColor("_DirtyColor", new Color(0.45f, 0.33f, 0.18f, 0.95f));
+            mat.SetColor("_CleanColor", new Color(0.1f, 0.5f, 0.95f, 0.8f));
+            mat.SetFloat("_Clarity", clarity);
+            mat.renderQueue = (int)RenderQueue.Transparent;
+            EditorUtility.SetDirty(mat);
         }
 
         // Ubah material URP Lit ke mode Transparent (sama seperti mengganti "Surface Type" di Inspector).
@@ -148,7 +160,22 @@ namespace WTP.EditorTools
                 unit.transform.localPosition = new Vector3(x, 0f, backRow ? RowBackZ : RowFrontZ);
                 unit.transform.localRotation = Quaternion.Euler(0f, backRow ? 0f : 180f, 0f);
                 placed.Add(unit.transform);
+
+                var wtpUnit = unit.AddComponent<WTPUnit>();
+                var so = new SerializedObject(wtpUnit);
+                so.FindProperty("unitType").enumValueIndex = i;
+                so.FindProperty("displayName").stringValue = ((UnitType)i).ToString();
+                so.ApplyModifiedPropertiesWithoutUndo();
             }
+
+            // PlantController di root memegang ke-7 unit sesuai urutan aliran.
+            var controller = root.AddComponent<PlantController>();
+            var cso = new SerializedObject(controller);
+            var unitsProp = cso.FindProperty("units");
+            unitsProp.arraySize = placed.Count;
+            for (int i = 0; i < placed.Count; i++)
+                unitsProp.GetArrayElementAtIndex(i).objectReferenceValue = placed[i].GetComponent<WTPUnit>();
+            cso.ApplyModifiedPropertiesWithoutUndo();
 
             // --- pipa antar unit: Outlet unit i -> Inlet unit i+1
             for (int i = 0; i < placed.Count - 1; i++)
