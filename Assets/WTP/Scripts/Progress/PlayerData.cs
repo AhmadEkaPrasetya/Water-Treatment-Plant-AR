@@ -14,6 +14,7 @@ namespace WTP.Progress
         public const int BelajarLevelCount = 7;
 
         public string playerName = "";
+        public bool prologueSeen;
 
         /// <summary>Bintang (0-3) per level Bagian 1, urutan: Intake ... Reservoir. 0 = belum selesai.</summary>
         public int[] belajarStars = new int[BelajarLevelCount];

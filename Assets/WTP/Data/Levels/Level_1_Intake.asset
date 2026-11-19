@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a9712d97480cc64282556fc42c5bc07, type: 3}
+  m_Name: Level_1_Intake
+  m_EditorClassIdentifier: Assembly-CSharp::WTP.Gameplay.Belajar.LevelData
+  unit: 0
+  title: Intake
+  intro:
+  - speaker: {fileID: 11400000, guid: af4daadbae8426347b28771114757740, type: 2}
+    text: Ini Intake, pintu masuk air dari sungai ke WTP.
+  - speaker: {fileID: 11400000, guid: af4daadbae8426347b28771114757740, type: 2}
+    text: Di sini ada saringan kasar bernama bar screen. Jeruji besinya menahan sampah besar seperti plastik, ranting, dan daun.
+  - speaker: {fileID: 11400000, guid: af4daadbae8426347b28771114757740, type: 2}
+    text: Setelah disaring, pompa intake menyedot air sungai dan mengalirkannya ke unit berikutnya.
+  outro:
+  - speaker: {fileID: 11400000, guid: af4daadbae8426347b28771114757740, type: 2}
+    text: Saringan bersih, pompa menyala! Air sungai sudah bisa masuk ke WTP. Tapi lihat, airnya masih keruh...
+  questions:
+  - text: Apa fungsi utama unit Intake?
+    options:
+    - Mengambil air dari sungai dan menyaring sampah besar
+    - Membunuh kuman di dalam air
+    - Menyimpan air bersih sebelum dibagikan
+    - Mengendapkan lumpur halus
+    correctIndex: 0
+    explanation: Intake adalah pintu masuk air baku (air sungai). Bar screen menahan sampah besar sebelum air dipompa ke unit berikutnya.
+  - text: Benda apa yang ditahan oleh bar screen (saringan kasar)?
+    options:
+    - Kuman dan bakteri
+    - Sampah besar seperti plastik dan ranting
+    - Garam yang larut di air
+    - Klorin
+    correctIndex: 1
+    explanation: Bar screen berupa jeruji besi, jadi hanya menahan benda besar. Kotoran halus dibersihkan di unit-unit berikutnya.
+  - text: Kenapa sampah harus disaring di Intake?
+    options:
+    - Supaya air langsung bisa diminum
+    - Supaya pompa dan pipa tidak rusak atau tersumbat
+    - Supaya air menjadi dingin
+    - Supaya klorin bekerja lebih cepat
+    correctIndex: 1
+    explanation: Sampah besar bisa menyumbat pipa dan merusak pompa. Ingat, air setelah Intake masih keruh dan belum aman diminum.

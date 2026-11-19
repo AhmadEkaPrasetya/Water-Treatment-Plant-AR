@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a9712d97480cc64282556fc42c5bc07, type: 3}
+  m_Name: Level_7_Reservoir
+  m_EditorClassIdentifier: Assembly-CSharp::WTP.Gameplay.Belajar.LevelData
+  unit: 6
+  title: Reservoir
+  intro:
+  - speaker: {fileID: 11400000, guid: af4daadbae8426347b28771114757740, type: 2}
+    text: Terakhir, Reservoir! Ini tangki besar tempat menyimpan air bersih sebelum dibagikan ke rumah warga.
+  - speaker: {fileID: 11400000, guid: af4daadbae8426347b28771114757740, type: 2}
+    text: Reservoir menjaga pasokan tetap ada saat pemakaian air sedang tinggi, misalnya pagi hari ketika semua orang mandi.
+  - speaker: {fileID: 11400000, guid: af4daadbae8426347b28771114757740, type: 2}
+    text: Tangkinya tertutup supaya air tidak tercemar lagi oleh debu, abu, atau hewan.
+  - speaker: {fileID: 11400000, guid: af4daadbae8426347b28771114757740, type: 2}
+    text: Dari sini air dialirkan lewat pipa distribusi ke seluruh Kota Tirtapura.
+  outro:
+  - speaker: {fileID: 11400000, guid: af4daadbae8426347b28771114757740, type: 2}
+    text: Reservoir penuh dan air mengalir ke kota! Kerja bagus, {player}!
+  - speaker: {fileID: 11400000, guid: c33d885d67938624193e5ed931950dc3, type: 2}
+    text: Nah, kan! Berkat kepemimpinan saya, air kembali mengalir! Mana kameranya? Ayo foto dulu!
+  - speaker: {fileID: 11400000, guid: af4daadbae8426347b28771114757740, type: 2}
+    text: ...Iya, iya, Pak. Yang penting warga dapat air bersih lagi.
+  questions:
+  - text: Apa fungsi utama Reservoir?
+    options:
+    - Menyimpan air bersih sebelum dibagikan ke warga
+    - Menyaring sampah besar
+    - Menggumpalkan kotoran
+    - Membuang lumpur
+    correctIndex: 0
+    explanation: Reservoir adalah tangki penampung air bersih yang sudah selesai diolah, sebelum didistribusikan ke warga.
+  - text: Kenapa reservoir dibuat tertutup?
+    options:
+    - Supaya air tidak tercemar lagi oleh debu dan kotoran
+    - Supaya air cepat menguap
+    - Supaya ikan bisa hidup di dalamnya
+    - Supaya tidak perlu klorin
+    correctIndex: 0
+    explanation: Air yang sudah bersih harus dilindungi dari pencemaran ulang sampai tiba di rumah warga.
+  - text: Manakah urutan proses WTP yang benar?
+    options:
+    - Intake, Koagulasi, Flokulasi, Sedimentasi, Filtrasi, Desinfeksi, Reservoir
+    - Intake, Filtrasi, Koagulasi, Reservoir, Desinfeksi, Sedimentasi, Flokulasi
+    - Reservoir, Intake, Desinfeksi, Filtrasi, Flokulasi, Koagulasi, Sedimentasi
+    - Koagulasi, Intake, Sedimentasi, Flokulasi, Desinfeksi, Filtrasi, Reservoir
+    correctIndex: 0
+    explanation: 'Urutan ini yang umum dipakai PDAM: ambil air, gumpalkan, endapkan, saring, bunuh kuman, lalu simpan. Kamu sudah memperbaiki semuanya!'

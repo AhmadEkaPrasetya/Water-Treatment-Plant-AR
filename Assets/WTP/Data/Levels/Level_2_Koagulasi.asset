@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a9712d97480cc64282556fc42c5bc07, type: 3}
+  m_Name: Level_2_Koagulasi
+  m_EditorClassIdentifier: Assembly-CSharp::WTP.Gameplay.Belajar.LevelData
+  unit: 1
+  title: Koagulasi
+  intro:
+  - speaker: {fileID: 11400000, guid: af4daadbae8426347b28771114757740, type: 2}
+    text: Ini bak Koagulasi. Air dari Intake masih keruh karena penuh partikel lumpur dan abu yang sangat kecil.
+  - speaker: {fileID: 11400000, guid: af4daadbae8426347b28771114757740, type: 2}
+    text: Partikel itu terlalu kecil untuk mengendap sendiri. Jadi kita tambahkan koagulan, biasanya tawas atau aluminium sulfat.
+  - speaker: {fileID: 11400000, guid: af4daadbae8426347b28771114757740, type: 2}
+    text: Pengaduk di sini berputar sangat cepat supaya tawas tercampur rata. Tawas membuat partikel kecil mulai saling menempel.
+  - speaker: {fileID: 11400000, guid: af4daadbae8426347b28771114757740, type: 2}
+    text: Hati-hati, dosis tawas harus pas! Terlalu sedikit, air tetap keruh. Terlalu banyak, boros dan air jadi terlalu asam.
+  outro:
+  - speaker: {fileID: 11400000, guid: af4daadbae8426347b28771114757740, type: 2}
+    text: Tawas sudah tercampur rata! Partikel kotoran sekarang siap digumpalkan.
+  questions:
+  - text: Bahan kimia yang biasa ditambahkan di bak Koagulasi adalah...
+    options:
+    - Tawas (aluminium sulfat)
+    - Garam dapur
+    - Gula
+    - Kaporit untuk membunuh kuman
+    correctIndex: 0
+    explanation: Tawas adalah koagulan yang paling umum dipakai PDAM. Kaporit atau klorin baru dipakai di tahap Desinfeksi.
+  - text: Kenapa pengaduk di bak Koagulasi berputar cepat?
+    options:
+    - Supaya air menjadi hangat
+    - Supaya tawas cepat tercampur rata dengan air
+    - Supaya lumpur langsung mengendap di bak ini
+    - Supaya ikan tidak ikut masuk
+    correctIndex: 1
+    explanation: Pengadukan cepat (rapid mixing) hanya sebentar. Tujuannya meratakan tawas ke seluruh air.
+  - text: Apa yang terjadi jika dosis tawas terlalu sedikit?
+    options:
+    - Air menjadi terlalu asam
+    - Partikel tidak menggumpal sehingga air tetap keruh
+    - Air langsung aman diminum
+    - Pompa intake mati
+    correctIndex: 1
+    explanation: 'Dosis kurang membuat partikel tidak menggumpal. Dosis berlebih juga buruk: boros dan pH air turun. Di PDAM, dosis yang tepat dicari lewat uji jar test.'

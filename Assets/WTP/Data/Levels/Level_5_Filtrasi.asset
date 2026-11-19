@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a9712d97480cc64282556fc42c5bc07, type: 3}
+  m_Name: Level_5_Filtrasi
+  m_EditorClassIdentifier: Assembly-CSharp::WTP.Gameplay.Belajar.LevelData
+  unit: 4
+  title: Filtrasi
+  intro:
+  - speaker: {fileID: 11400000, guid: af4daadbae8426347b28771114757740, type: 2}
+    text: Sekarang kita di unit Filtrasi. Air dari Sedimentasi sudah cukup jernih, tapi masih ada partikel halus yang lolos.
+  - speaker: {fileID: 11400000, guid: af4daadbae8426347b28771114757740, type: 2}
+    text: 'Air disaring melewati beberapa lapisan: pasir halus di atas, lalu pasir kasar, kerikil kecil, dan kerikil besar di bawah.'
+  - speaker: {fileID: 11400000, guid: af4daadbae8426347b28771114757740, type: 2}
+    text: Pasir halus menangkap partikel kecil, sedangkan kerikil menopang pasir supaya tidak ikut terbawa air.
+  - speaker: {fileID: 11400000, guid: af4daadbae8426347b28771114757740, type: 2}
+    text: Kalau filter mulai tersumbat, filter dicuci dengan aliran air terbalik dari bawah ke atas. Namanya backwash.
+  outro:
+  - speaker: {fileID: 11400000, guid: af4daadbae8426347b28771114757740, type: 2}
+    text: Lapisan filter tersusun dengan benar! Air yang keluar dari filter sudah jernih.
+  questions:
+  - text: Media apa yang ada di lapisan paling atas filter pasir?
+    options:
+    - Kerikil besar
+    - Pasir halus
+    - Batu bata
+    - Kapas
+    correctIndex: 1
+    explanation: Pasir halus di atas menangkap partikel paling kecil. Lapisan yang lebih kasar di bawah menopang pasir dan mengalirkan air keluar.
+  - text: Apa fungsi lapisan kerikil di bagian bawah filter?
+    options:
+    - Membunuh kuman
+    - Menopang lapisan pasir supaya tidak ikut terbawa air
+    - Memberi rasa pada air
+    - Menambah tawas
+    correctIndex: 1
+    explanation: Kerikil menjadi penyangga pasir dan membantu air yang sudah tersaring mengalir ke pipa keluar.
+  - text: Cara membersihkan filter yang mulai tersumbat disebut...
+    options:
+    - Backwash (cuci balik)
+    - Koagulasi
+    - Klorinasi
+    - Sedimentasi
+    correctIndex: 0
+    explanation: Backwash mengalirkan air dari bawah ke atas untuk mengangkat kotoran yang tertahan di pasir, lalu air kotornya dibuang.

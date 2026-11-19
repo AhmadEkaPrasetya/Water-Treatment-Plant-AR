@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a9712d97480cc64282556fc42c5bc07, type: 3}
+  m_Name: Level_4_Sedimentasi
+  m_EditorClassIdentifier: Assembly-CSharp::WTP.Gameplay.Belajar.LevelData
+  unit: 3
+  title: Sedimentasi
+  intro:
+  - speaker: {fileID: 11400000, guid: af4daadbae8426347b28771114757740, type: 2}
+    text: Ini bak Sedimentasi, tempat flok diendapkan.
+  - speaker: {fileID: 11400000, guid: af4daadbae8426347b28771114757740, type: 2}
+    text: Air dialirkan sangat pelan. Flok yang berat perlahan tenggelam ke dasar bak dan menjadi lumpur.
+  - speaker: {fileID: 11400000, guid: af4daadbae8426347b28771114757740, type: 2}
+    text: Pelat-pelat miring di sini, namanya settler, membantu flok mengendap lebih cepat.
+  - speaker: {fileID: 11400000, guid: af4daadbae8426347b28771114757740, type: 2}
+    text: Air jernih di bagian atas mengalir ke unit berikutnya. Lumpur di dasar harus rutin dibuang lewat katup lumpur, kalau tidak baknya penuh.
+  outro:
+  - speaker: {fileID: 11400000, guid: af4daadbae8426347b28771114757740, type: 2}
+    text: Lumpur sudah dibuang dan air di bagian atas mulai jernih! Kerja bagus, {player}.
+  questions:
+  - text: Apa yang terjadi pada flok di bak Sedimentasi?
+    options:
+    - Flok mengapung ke permukaan lalu dibakar
+    - Flok mengendap ke dasar karena beratnya
+    - Flok dihancurkan oleh pengaduk
+    - Flok berubah menjadi klorin
+    correctIndex: 1
+    explanation: Flok lebih berat dari air, jadi tenggelam perlahan dan menumpuk sebagai lumpur di dasar bak.
+  - text: Kenapa air di bak Sedimentasi harus mengalir pelan?
+    options:
+    - Supaya flok punya waktu untuk mengendap
+    - Supaya air cepat sampai ke rumah warga
+    - Supaya pompa hemat listrik
+    - Supaya air menjadi hangat
+    correctIndex: 0
+    explanation: Aliran yang deras akan mengaduk lagi flok yang sudah turun. Aliran yang tenang membuat flok bisa mengendap.
+  - text: Apa akibatnya jika lumpur di dasar bak tidak pernah dibuang?
+    options:
+    - Air menjadi lebih jernih
+    - Bak penuh lumpur dan lumpur ikut terbawa ke unit berikutnya
+    - Kadar klorin bertambah
+    - Tidak ada pengaruhnya
+    correctIndex: 1
+    explanation: Lumpur yang menumpuk mengurangi kapasitas bak dan bisa terbawa aliran, sehingga filter di unit berikutnya cepat tersumbat.

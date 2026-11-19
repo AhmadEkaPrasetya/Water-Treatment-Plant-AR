@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a9712d97480cc64282556fc42c5bc07, type: 3}
+  m_Name: Level_3_Flokulasi
+  m_EditorClassIdentifier: Assembly-CSharp::WTP.Gameplay.Belajar.LevelData
+  unit: 2
+  title: Flokulasi
+  intro:
+  - speaker: {fileID: 11400000, guid: af4daadbae8426347b28771114757740, type: 2}
+    text: Selamat datang di bak Flokulasi! Di sini partikel yang sudah diberi tawas dikumpulkan menjadi gumpalan yang lebih besar.
+  - speaker: {fileID: 11400000, guid: af4daadbae8426347b28771114757740, type: 2}
+    text: Gumpalan ini namanya flok. Semakin besar dan berat floknya, semakin mudah nanti mengendap.
+  - speaker: {fileID: 11400000, guid: af4daadbae8426347b28771114757740, type: 2}
+    text: Pengaduknya sengaja berputar pelan. Kalau terlalu cepat, flok yang sudah terbentuk malah pecah lagi.
+  - speaker: {fileID: 11400000, guid: af4daadbae8426347b28771114757740, type: 2}
+    text: Sekat zig-zag membuat air berkelok-kelok, jadi partikel punya waktu lebih lama untuk bertemu dan menempel.
+  outro:
+  - speaker: {fileID: 11400000, guid: af4daadbae8426347b28771114757740, type: 2}
+    text: Lihat, flok-flok besar mulai terbentuk! Siap dikirim ke bak pengendapan.
+  questions:
+  - text: Gumpalan kotoran yang terbentuk di bak Flokulasi disebut...
+    options:
+    - Flok
+    - Klorin
+    - Pasir
+    - Kerak
+    correctIndex: 0
+    explanation: Flok adalah gumpalan partikel kotoran yang saling menempel setelah diberi koagulan.
+  - text: Bagaimana kecepatan pengaduk di bak Flokulasi?
+    options:
+    - Sangat cepat, lebih cepat dari Koagulasi
+    - Pelan, supaya flok tidak pecah
+    - Tidak ada pengaduk sama sekali
+    - Berhenti dan berputar bergantian setiap detik
+    correctIndex: 1
+    explanation: Koagulasi = aduk cepat sebentar, Flokulasi = aduk pelan lebih lama. Aduk terlalu cepat membuat flok hancur lagi.
+  - text: Apa gunanya sekat zig-zag di bak Flokulasi?
+    options:
+    - Memperpanjang jalur air supaya partikel lebih sering bertemu
+    - Menyaring kuman
+    - Menambah klorin
+    - Mendinginkan air
+    correctIndex: 0
+    explanation: Jalur yang berkelok membuat air lebih lama di dalam bak, sehingga partikel lebih sering bertemu dan flok tumbuh lebih besar.

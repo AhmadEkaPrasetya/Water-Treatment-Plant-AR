@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a9712d97480cc64282556fc42c5bc07, type: 3}
+  m_Name: Level_6_Desinfeksi
+  m_EditorClassIdentifier: Assembly-CSharp::WTP.Gameplay.Belajar.LevelData
+  unit: 5
+  title: Desinfeksi
+  intro:
+  - speaker: {fileID: 11400000, guid: af4daadbae8426347b28771114757740, type: 2}
+    text: Ini unit Desinfeksi. Air sudah jernih, tapi jernih belum tentu aman! Masih bisa ada kuman yang tidak terlihat.
+  - speaker: {fileID: 11400000, guid: af4daadbae8426347b28771114757740, type: 2}
+    text: Di sini air diberi klorin atau kaporit untuk membunuh bakteri dan kuman penyebab penyakit, misalnya diare.
+  - speaker: {fileID: 11400000, guid: af4daadbae8426347b28771114757740, type: 2}
+    text: Dosisnya harus tepat. Menurut aturan air minum, sisa klor di air harus 0,2 sampai 0,5 mg/L.
+  - speaker: {fileID: 11400000, guid: af4daadbae8426347b28771114757740, type: 2}
+    text: Kurang dari itu, kuman bisa tumbuh lagi di pipa. Lebih dari itu, air bau kaporit dan tidak enak diminum.
+  outro:
+  - speaker: {fileID: 11400000, guid: af4daadbae8426347b28771114757740, type: 2}
+    text: Dosis klorin pas! Kuman sudah dibasmi dan air aman dari bakteri.
+  questions:
+  - text: Kenapa air yang sudah jernih masih perlu didesinfeksi?
+    options:
+    - Supaya warnanya lebih biru
+    - Karena masih bisa ada kuman yang tidak terlihat
+    - Supaya air lebih berat
+    - Supaya air tidak membeku
+    correctIndex: 1
+    explanation: Kuman dan bakteri terlalu kecil untuk dilihat. Air yang jernih belum tentu bebas kuman.
+  - text: Bahan yang biasa dipakai untuk desinfeksi di PDAM adalah...
+    options:
+    - Klorin (kaporit)
+    - Tawas
+    - Pasir
+    - Garam dapur
+    correctIndex: 0
+    explanation: Klorin murah dan efektif membunuh kuman. Tawas dipakai di Koagulasi, bukan untuk membunuh kuman.
+  - text: Berapa batas sisa klor yang aman di air minum?
+    options:
+    - 0 mg/L, tidak boleh ada klor sama sekali
+    - 0,2 sampai 0,5 mg/L
+    - 5 sampai 10 mg/L
+    - Semakin banyak semakin baik
+    correctIndex: 1
+    explanation: 'Permenkes No. 2 Tahun 2023 menetapkan sisa klor 0,2 sampai 0,5 mg/L: cukup untuk menjaga air bebas kuman sampai ke rumah warga, tapi tidak terlalu bau.'
