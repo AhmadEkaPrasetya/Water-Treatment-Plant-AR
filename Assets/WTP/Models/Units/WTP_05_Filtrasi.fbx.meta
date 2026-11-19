@@ -3,7 +3,67 @@ guid: f340ba9f7a13d414d80a43ab9ebf328f
 ModelImporter:
   serializedVersion: 24600
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Accent
+    second: {fileID: 2100000, guid: e3edc9e6f534e7444ad33e206cec6859, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Concrete
+    second: {fileID: 2100000, guid: 74d8ec806919a454da354bb61561283a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ConcreteDark
+    second: {fileID: 2100000, guid: 39af4e39ef0f36e4b86f90724451b6a3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Glass
+    second: {fileID: 2100000, guid: db9428c757c15f94180b341d27b5aa27, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: GravelLarge
+    second: {fileID: 2100000, guid: 382b653aa41cad443851012ecbfaacc7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: GravelSmall
+    second: {fileID: 2100000, guid: 5da31be3aaad60a4d97953035a9d1733, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Metal
+    second: {fileID: 2100000, guid: 952d5b9c9bf71204193b1d5573f75fc6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Pipe
+    second: {fileID: 2100000, guid: 824a7ba97283d9b4e855443f191dafc0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SandCoarse
+    second: {fileID: 2100000, guid: 17aebe78b4bb1c945a5fb5ed908755c4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SandFine
+    second: {fileID: 2100000, guid: 659f027a2c8b02142b2a5326c346bc72, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Screen
+    second: {fileID: 2100000, guid: 0102e7c3a51b06e46bb051e8afeeeb65, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Water
+    second: {fileID: 2100000, guid: 1df813c09e9beb447b4c670598157fb1, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
