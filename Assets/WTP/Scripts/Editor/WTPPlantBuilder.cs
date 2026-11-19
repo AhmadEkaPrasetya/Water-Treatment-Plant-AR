@@ -78,7 +78,13 @@ namespace WTP.EditorTools
             GetOrCreateMat("Ground", new Color(0.47f, 0.62f, 0.38f));
             UseWaterShader(GetOrCreateMat("RiverWater", Color.white), clarity: 0.05f); // sungai tercemar abu karhutla
             var window = GetOrCreateMat("Window", new Color(0.25f, 0.27f, 0.32f));
-            window.SetColor("_EmissionColor", Color.black); // nanti dinyalakan oleh CityLights
+            window.SetColor("_EmissionColor", Color.black); // jendela gelap (belum ada air bersih)
+            // Jendela menyala (dipakai CityLights): kuning hangat + emission supaya terlihat "bercahaya".
+            var lit = GetOrCreateMat("WindowLit", new Color(1f, 0.85f, 0.45f));
+            lit.EnableKeyword("_EMISSION");
+            lit.SetColor("_EmissionColor", new Color(1f, 0.75f, 0.3f) * 1.5f);
+            lit.globalIlluminationFlags = MaterialGlobalIlluminationFlags.None;
+            EditorUtility.SetDirty(lit);
 
             AssetDatabase.SaveAssets();
             Debug.Log("[WTP] Material siap di " + MaterialFolder);
@@ -192,7 +198,14 @@ namespace WTP.EditorTools
             });
 
             // --- kota placeholder + pipa distribusi dari Reservoir
-            BuildCity(content);
+            Transform city = BuildCity(content);
+            var lights = city.gameObject.AddComponent<CityLights>();
+            var lso = new SerializedObject(lights);
+            lso.FindProperty("darkWindow").objectReferenceValue = LoadMat("Window");
+            lso.FindProperty("litWindow").objectReferenceValue = LoadMat("WindowLit");
+            lso.ApplyModifiedPropertiesWithoutUndo();
+            cso.FindProperty("cityLights").objectReferenceValue = lights;
+            cso.ApplyModifiedPropertiesWithoutUndo();
             Vector3 r = content.InverseTransformPoint(placed[6].Find("Outlet").position);
             BuildPipe(pipes, "Pipe_Reservoir_Kota", new List<Vector3> { r, new Vector3(4.2f, r.y, r.z) });
 
@@ -266,7 +279,7 @@ namespace WTP.EditorTools
         }
 
         // Kota Tirtapura (placeholder): rumah kotak dengan jendela yang nanti menyala per level selesai.
-        static void BuildCity(Transform content)
+        static Transform BuildCity(Transform content)
         {
             Transform city = Child(content, "City");
             Material wall = LoadMat("BuildingWall"), roof = LoadMat("Roof"), window = LoadMat("Window");
@@ -283,6 +296,7 @@ namespace WTP.EditorTools
                 // Jendela di sisi depan (-Z) yang menghadap pemain.
                 Box(house, "Window", new Vector3(0f, h * 0.6f, -0.51f), new Vector3(0.6f, h * 0.3f, 0.02f), window);
             }
+            return city;
         }
 
         // ---------------------------------------------------------------- Helpers

@@ -61,15 +61,16 @@ namespace WTP.EditorTools
             var coagulation = BuildCoagulation(container);
             var filtration = BuildFiltration(container);
             var disinfection = BuildDisinfection(container);
+            var flocculation = BuildFlocculation(container);
+            var sedimentation = BuildSedimentation(container);
+            var reservoir = BuildReservoir(container);
 
             // Sambungkan ke LevelController.miniGames (indeks = UnitType).
             var so = new SerializedObject(controller);
             SerializedProperty games = so.FindProperty("miniGames");
             games.arraySize = 7;
-            games.GetArrayElementAtIndex(0).objectReferenceValue = intake;
-            games.GetArrayElementAtIndex(1).objectReferenceValue = coagulation;
-            games.GetArrayElementAtIndex(4).objectReferenceValue = filtration;
-            games.GetArrayElementAtIndex(5).objectReferenceValue = disinfection;
+            MiniGame[] all = { intake, coagulation, flocculation, sedimentation, filtration, disinfection, reservoir };
+            for (int i = 0; i < all.Length; i++) games.GetArrayElementAtIndex(i).objectReferenceValue = all[i];
             so.ApplyModifiedPropertiesWithoutUndo();
 
             EditorSceneManager.MarkSceneDirty(scene);
@@ -261,6 +262,244 @@ namespace WTP.EditorTools
             card.gameObject.SetActive(false);
             return game;
         }
+
+        // ---------------- Flokulasi ----------------
+
+        static FlocculationGame BuildFlocculation(RectTransform parent)
+        {
+            RectTransform card = Card("FlocculationGame", parent, top: false, height: 600);
+            Text(card, "Title", "Aduk Pelan-Pelan", -25, 70, 46, TitleColor);
+            TMP_Text timer = Text(card, "Timer", "", -25, 70, 34, InfoColor);
+            timer.alignment = TextAlignmentOptions.Right;
+            TMP_Text status = Text(card, "Status", "", -100, 90, 34, Color.white);
+
+            // Kiri: roda pengaduk yang diputar jari.
+            RectTransform dial = NewRect("Dial", card);
+            dial.anchorMin = dial.anchorMax = new Vector2(0f, 1f);
+            dial.pivot = new Vector2(0.5f, 0.5f);
+            dial.anchoredPosition = new Vector2(220f, -370f);
+            dial.sizeDelta = new Vector2(320f, 320f);
+            Image dialImg = AddImage(dial, new Color(0.1f, 0.3f, 0.45f));
+            dialImg.sprite = Knob;
+            RectTransform handle = NewRect("Handle", dial);
+            Stretch(handle);
+            RectTransform mark = NewRect("Mark", handle);
+            mark.anchorMin = mark.anchorMax = new Vector2(0.5f, 0.5f);
+            mark.anchoredPosition = new Vector2(0f, 115f);
+            mark.sizeDelta = new Vector2(60f, 60f);
+            AddImage(mark, ButtonYellow).sprite = Knob;
+            TMP_Text dialLabel = Text(dial, "Label", "Putar\ndi sini", 0, 0, 30, InfoColor);
+            Stretch(dialLabel.rectTransform);
+
+            // Kanan: bar kecepatan (zona hijau = pas) dan bar ukuran flok.
+            RightLabel(card, "SpeedLabel", "Kecepatan aduk", -230);
+            RectTransform speedBar = RightBar(card, "SpeedBar", -280, out RectTransform speedFill, out Image speedImg);
+            RectTransform zone = NewRect("GoodZone", speedBar);
+            zone.anchorMin = new Vector2(180f / 900f, -0.35f);
+            zone.anchorMax = new Vector2(540f / 900f, -0.1f);
+            zone.offsetMin = zone.offsetMax = Vector2.zero;
+            AddImage(zone, new Color(0.25f, 0.75f, 0.35f));
+
+            RightLabel(card, "FlocLabel", "Ukuran flok", -370);
+            RightBar(card, "FlocBar", -420, out RectTransform flocFill, out Image flocImg);
+            flocImg.color = new Color(0.62f, 0.45f, 0.28f);
+
+            var dots = new RectTransform[5];
+            for (int i = 0; i < dots.Length; i++)
+            {
+                dots[i] = NewRect($"Floc{i + 1}", card);
+                dots[i].anchorMin = dots[i].anchorMax = new Vector2(0.5f, 1f);
+                dots[i].anchoredPosition = new Vector2(70f + i * 85f, -530f);
+                dots[i].sizeDelta = new Vector2(64f, 64f);
+                AddImage(dots[i], new Color(0.62f, 0.45f, 0.28f)).sprite = Knob;
+            }
+
+            var game = card.gameObject.AddComponent<FlocculationGame>();
+            var so = new SerializedObject(game);
+            so.FindProperty("dial").objectReferenceValue = dial;
+            so.FindProperty("dialHandle").objectReferenceValue = handle;
+            so.FindProperty("speedFill").objectReferenceValue = speedFill;
+            so.FindProperty("speedFillImage").objectReferenceValue = speedImg;
+            so.FindProperty("flocFill").objectReferenceValue = flocFill;
+            SerializedProperty dotsProp = so.FindProperty("flocDots");
+            dotsProp.arraySize = dots.Length;
+            for (int i = 0; i < dots.Length; i++) dotsProp.GetArrayElementAtIndex(i).objectReferenceValue = dots[i];
+            so.FindProperty("statusText").objectReferenceValue = status;
+            so.FindProperty("timerText").objectReferenceValue = timer;
+            so.ApplyModifiedPropertiesWithoutUndo();
+
+            card.gameObject.SetActive(false);
+            return game;
+        }
+
+        static void RightLabel(RectTransform card, string name, string text, float y)
+        {
+            TMP_Text t = Text(card, name, text, y, 50, 32, InfoColor);
+            t.rectTransform.anchorMin = new Vector2(0.42f, 1f);
+            t.rectTransform.sizeDelta = new Vector2(-40f, 50f);
+            t.alignment = TextAlignmentOptions.Left;
+        }
+
+        static RectTransform RightBar(RectTransform card, string name, float y, out RectTransform fill, out Image fillImage)
+        {
+            RectTransform bar = NewRect(name, card);
+            SetRect(bar, new Vector2(0.42f, 1f), new Vector2(1f, 1f), new Vector2(-10f, y), new Vector2(-60f, 50f));
+            AddImage(bar, new Color(0.02f, 0.07f, 0.12f, 1f));
+            fill = NewRect("Fill", bar);
+            fill.anchorMin = Vector2.zero;
+            fill.anchorMax = new Vector2(0f, 1f);
+            fill.offsetMin = fill.offsetMax = Vector2.zero;
+            fillImage = AddImage(fill, Color.gray);
+            return bar;
+        }
+
+        // ---------------- Sedimentasi ----------------
+
+        static SedimentationGame BuildSedimentation(RectTransform parent)
+        {
+            RectTransform card = Card("SedimentationGame", parent, top: false, height: 640);
+            Text(card, "Title", "Buang Lumpur", -25, 70, 46, TitleColor);
+            TMP_Text timer = Text(card, "Timer", "", -25, 70, 34, InfoColor);
+            timer.alignment = TextAlignmentOptions.Right;
+            TMP_Text status = Text(card, "Status", "", -100, 100, 34, Color.white);
+
+            // Kiri: penampang bak, lumpur naik dari dasar.
+            RectTransform tank = NewRect("Tank", card);
+            tank.anchorMin = tank.anchorMax = new Vector2(0f, 1f);
+            tank.pivot = new Vector2(0.5f, 1f);
+            tank.anchoredPosition = new Vector2(200f, -215f);
+            tank.sizeDelta = new Vector2(240f, 380f);
+            AddImage(tank, new Color(0.35f, 0.6f, 0.85f, 0.6f));
+            RectTransform sludge = NewRect("Sludge", tank);
+            sludge.anchorMin = Vector2.zero;
+            sludge.anchorMax = new Vector2(1f, 0.2f);
+            sludge.offsetMin = sludge.offsetMax = Vector2.zero;
+            Image sludgeImg = AddImage(sludge, new Color(0.55f, 0.42f, 0.25f));
+            TankLine(tank, "DangerLine", 0.8f, new Color(0.9f, 0.25f, 0.2f), "penuh");
+            TankLine(tank, "WasteLine", 0.3f, ButtonYellow, "tipis");
+
+            // Kanan: nilai, tombol katup, petunjuk.
+            TMP_Text score = Text(card, "Score", "", -230, 60, 40, TitleColor);
+            score.rectTransform.anchorMin = new Vector2(0.42f, 1f);
+            Button valve = MakeButton(card, "ValveButton", "Buka Katup\nLumpur", Vector2.zero, Vector2.zero, ButtonYellow, DarkText);
+            var vr = (RectTransform)valve.transform;
+            SetRect(vr, new Vector2(0.42f, 1f), new Vector2(1f, 1f), new Vector2(-10f, -320f), new Vector2(-60f, 150f));
+            TMP_Text hint = Text(card, "Hint", "Buang lumpur sebelum garis merah, tapi jangan saat masih di bawah garis kuning.",
+                                 -495, 110, 28, InfoColor);
+            hint.rectTransform.anchorMin = new Vector2(0.42f, 1f);
+
+            var game = card.gameObject.AddComponent<SedimentationGame>();
+            var so = new SerializedObject(game);
+            so.FindProperty("valveButton").objectReferenceValue = valve;
+            so.FindProperty("sludgeFill").objectReferenceValue = sludge;
+            so.FindProperty("sludgeFillImage").objectReferenceValue = sludgeImg;
+            so.FindProperty("statusText").objectReferenceValue = status;
+            so.FindProperty("timerText").objectReferenceValue = timer;
+            so.FindProperty("scoreText").objectReferenceValue = score;
+            so.ApplyModifiedPropertiesWithoutUndo();
+
+            card.gameObject.SetActive(false);
+            return game;
+        }
+
+        static void TankLine(RectTransform tank, string name, float height, Color color, string label)
+        {
+            RectTransform line = NewRect(name, tank);
+            line.anchorMin = new Vector2(0f, height);
+            line.anchorMax = new Vector2(1f, height);
+            line.sizeDelta = new Vector2(0f, 6f);
+            AddImage(line, color);
+            RectTransform lr = NewRect("Label", line);
+            lr.anchorMin = lr.anchorMax = new Vector2(1f, 0.5f);
+            lr.pivot = new Vector2(0f, 0.5f);
+            lr.anchoredPosition = new Vector2(8f, 0f);
+            lr.sizeDelta = new Vector2(100f, 40f);
+            var t = lr.gameObject.AddComponent<TextMeshProUGUI>();
+            t.font = TMP_Settings.defaultFontAsset;
+            t.text = label;
+            t.fontSize = 26;
+            t.color = color;
+            t.raycastTarget = false;
+        }
+
+        // ---------------- Reservoir ----------------
+
+        static ReservoirGame BuildReservoir(RectTransform parent)
+        {
+            RectTransform card = Card("ReservoirGame", parent, top: false, height: 800);
+            Text(card, "Title", "Sambung Pipa", -25, 70, 46, TitleColor);
+            TMP_Text timer = Text(card, "Timer", "", -25, 70, 34, InfoColor);
+            timer.alignment = TextAlignmentOptions.Right;
+            TMP_Text status = Text(card, "Status", "", -100, 90, 34, Color.white);
+
+            const float cell = 165f, tileSize = 155f, arm = 42f;
+            var tiles = new Button[12];
+            for (int row = 0; row < 3; row++)
+            for (int col = 0; col < 4; col++)
+            {
+                Button tile = MakeButton(card, $"Tile_{col}_{row}", "", Vector2.zero, Vector2.zero,
+                                         new Color(0.08f, 0.2f, 0.3f), Color.white);
+                Object.DestroyImmediate(tile.transform.Find("Text (TMP)").gameObject);
+                var tr = (RectTransform)tile.transform;
+                tr.anchorMin = tr.anchorMax = new Vector2(0.5f, 1f);
+                tr.pivot = new Vector2(0.5f, 0.5f);
+                tr.anchoredPosition = new Vector2((col - 1.5f) * cell, -300f - row * cell);
+                tr.sizeDelta = new Vector2(tileSize, tileSize);
+
+                // Pipa: 4 lengan (U/T/S/B) + bulatan tengah; script menyalakan lengan sesuai bentuk.
+                RectTransform pipe = NewRect("Pipe", tr);
+                Stretch(pipe);
+                PipeArm(pipe, "N", new Vector2(0f, tileSize / 4f), new Vector2(arm, tileSize / 2f));
+                PipeArm(pipe, "E", new Vector2(tileSize / 4f, 0f), new Vector2(tileSize / 2f, arm));
+                PipeArm(pipe, "S", new Vector2(0f, -tileSize / 4f), new Vector2(arm, tileSize / 2f));
+                PipeArm(pipe, "W", new Vector2(-tileSize / 4f, 0f), new Vector2(tileSize / 2f, arm));
+                PipeArm(pipe, "Center", Vector2.zero, new Vector2(arm * 1.4f, arm * 1.4f)).sprite = Knob;
+                tiles[row * 4 + col] = tile;
+            }
+
+            RectTransform entry = EndMarker(card, "EntryMarker", "Dari\nReservoir", -2.5f * cell - 15f, new Color(0.2f, 0.5f, 0.9f));
+            RectTransform exit = EndMarker(card, "ExitMarker", "Ke\nKota", 2.5f * cell + 15f, new Color(0.25f, 0.65f, 0.35f));
+
+            var game = card.gameObject.AddComponent<ReservoirGame>();
+            var so = new SerializedObject(game);
+            SerializedProperty tilesProp = so.FindProperty("tiles");
+            tilesProp.arraySize = tiles.Length;
+            for (int i = 0; i < tiles.Length; i++) tilesProp.GetArrayElementAtIndex(i).objectReferenceValue = tiles[i];
+            so.FindProperty("entryMarker").objectReferenceValue = entry;
+            so.FindProperty("exitMarker").objectReferenceValue = exit;
+            so.FindProperty("statusText").objectReferenceValue = status;
+            so.FindProperty("timerText").objectReferenceValue = timer;
+            so.ApplyModifiedPropertiesWithoutUndo();
+
+            card.gameObject.SetActive(false);
+            return game;
+        }
+
+        static Image PipeArm(RectTransform pipe, string name, Vector2 pos, Vector2 size)
+        {
+            RectTransform r = NewRect(name, pipe);
+            r.anchorMin = r.anchorMax = new Vector2(0.5f, 0.5f);
+            r.anchoredPosition = pos;
+            r.sizeDelta = size;
+            Image img = AddImage(r, Color.gray);
+            img.raycastTarget = false;
+            return img;
+        }
+
+        static RectTransform EndMarker(RectTransform card, string name, string label, float x, Color color)
+        {
+            RectTransform r = NewRect(name, card);
+            r.anchorMin = r.anchorMax = new Vector2(0.5f, 1f);
+            r.pivot = new Vector2(0.5f, 0.5f);
+            r.anchoredPosition = new Vector2(x, -300f);
+            r.sizeDelta = new Vector2(130f, 110f);
+            AddImage(r, color, sliced: true).raycastTarget = false;
+            TMP_Text t = Text(r, "Label", label, 0, 0, 24, Color.white);
+            Stretch(t.rectTransform);
+            return r;
+        }
+
+        static Sprite Knob => AssetDatabase.GetBuiltinExtraResource<Sprite>("UI/Skin/Knob.psd");
 
         // ---------------- Helper UI ----------------
 

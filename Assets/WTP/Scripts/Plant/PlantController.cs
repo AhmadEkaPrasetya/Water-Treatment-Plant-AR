@@ -18,6 +18,8 @@ namespace WTP.Plant
 
         [Tooltip("Urutan: Intake, Koagulasi, Flokulasi, Sedimentasi, Filtrasi, Desinfeksi, Reservoir")]
         [SerializeField] WTPUnit[] units = new WTPUnit[7];
+        [Tooltip("Lampu rumah di kota, menyala sesuai jumlah unit yang berfungsi")]
+        [SerializeField] CityLights cityLights;
 
         public IReadOnlyList<WTPUnit> Units => units;
 
@@ -41,6 +43,7 @@ namespace WTP.Plant
             }
             // Reservoir terisi kalau semua unit sebelumnya bekerja.
             GetUnit(UnitType.Reservoir).SetWaterLevel(workingCount >= units.Length ? 1f : 0.15f);
+            if (cityLights != null) cityLights.SetWorkingUnits(workingCount, units.Length, instant);
         }
     }
 }
