@@ -7,6 +7,7 @@ namespace WTP.UI.Panels
 {
     /// <summary>
     /// Daftar 7 level Bagian 1. Tiap baris: tombol nama unit + bintang. Level terkunci abu-abu.
+    /// Tombol Kembali menutup daftar dan kembali ke layar Pilih Bagian.
     /// Panel ini hanya menampilkan; isi & aksi diberikan oleh pemanggil lewat Show().
     /// </summary>
     public class LevelSelectPanel : MonoBehaviour
@@ -22,8 +23,10 @@ namespace WTP.UI.Panels
         [SerializeField] TMP_Text[] levelLabels;
         [Tooltip("3 gambar bintang per level, berurutan (level 1: 0-2, level 2: 3-5, ...)")]
         [SerializeField] Image[] starImages;
+        [SerializeField] Button backButton;
 
         Action<int> onChosen;
+        Action onBack;
 
         void Awake()
         {
@@ -32,11 +35,13 @@ namespace WTP.UI.Panels
                 int index = i;
                 levelButtons[i].onClick.AddListener(() => onChosen?.Invoke(index));
             }
+            if (backButton != null) backButton.onClick.AddListener(() => onBack?.Invoke());
         }
 
-        public void Show(string[] titles, int[] stars, bool[] unlocked, Action<int> onLevelChosen)
+        public void Show(string[] titles, int[] stars, bool[] unlocked, Action<int> onLevelChosen, Action onBackClicked)
         {
             onChosen = onLevelChosen;
+            onBack = onBackClicked;
             for (int i = 0; i < levelButtons.Length; i++)
             {
                 bool open = i < titles.Length && unlocked[i];

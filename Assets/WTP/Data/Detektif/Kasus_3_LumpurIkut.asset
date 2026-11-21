@@ -1,0 +1,118 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8425aae45154a5a4aa4dab1bacd3c896, type: 3}
+  m_Name: Kasus_3_LumpurIkut
+  m_EditorClassIdentifier: Assembly-CSharp::WTP.Gameplay.Detektif.CaseData
+  title: Butiran Lumpur di Gelas
+  reporter: Mbak Lia
+  report: Kalau air didiamkan di gelas, ada butiran lumpur yang turun ke dasar. Jijik!
+  intro:
+  - speaker: {fileID: 11400000, guid: af4daadbae8426347b28771114757740, type: 2}
+    text: Laporan dari Mbak Lia, {player}. Ada butiran lumpur di air minum. Ayo periksa!
+  outro:
+  - speaker: {fileID: 11400000, guid: af4daadbae8426347b28771114757740, type: 2}
+    text: Beres! Ingat mini-game Sedimentasi? Lumpur memang harus dibuang sebelum bak penuh.
+  faultyUnit: 3
+  units:
+  - unit: 0
+    measurements:
+    - label: Kekeruhan air sungai
+      value: 150 NTU
+      normalRange: di bawah 200 NTU
+      abnormal: 0
+    - label: Debit air masuk
+      value: 100 L/detik
+      normalRange: 90-110 L/detik
+      abnormal: 0
+    - label: Saringan sampah
+      value: bersih
+      normalRange: bersih
+      abnormal: 0
+  - unit: 1
+    measurements:
+    - label: Dosis tawas
+      value: 30 mg/L
+      normalRange: 20-40 mg/L
+      abnormal: 0
+    - label: pH air
+      value: 7,0
+      normalRange: 6,5-8,5
+      abnormal: 0
+    - label: Pengaduk cepat
+      value: berputar
+      normalRange: berputar
+      abnormal: 0
+  - unit: 2
+    measurements:
+    - label: Kecepatan aduk
+      value: 40 rpm
+      normalRange: 20-60 rpm
+      abnormal: 0
+    - label: Ukuran flok
+      value: besar
+      normalRange: besar, mudah mengendap
+      abnormal: 0
+  - unit: 3
+    measurements:
+    - label: Tinggi lumpur di dasar
+      value: 95%
+      normalRange: di bawah 60%
+      abnormal: 1
+    - label: Kekeruhan air keluar
+      value: 90 NTU
+      normalRange: di bawah 25 NTU
+      abnormal: 1
+  - unit: 4
+    measurements:
+    - label: Kekeruhan air keluar
+      value: 15 NTU
+      normalRange: di bawah 3 NTU
+      abnormal: 1
+    - label: Hambatan saringan
+      value: 1,7 m
+      normalRange: di bawah 1,5 m
+      abnormal: 1
+    - label: Debit air keluar
+      value: 100 L/detik
+      normalRange: 90-110 L/detik
+      abnormal: 0
+  - unit: 5
+    measurements:
+    - label: Sisa klorin
+      value: 0,3 mg/L
+      normalRange: 0,2-0,5 mg/L
+      abnormal: 0
+    - label: Stok klorin
+      value: 70%
+      normalRange: di atas 20%
+      abnormal: 0
+  - unit: 6
+    measurements:
+    - label: Tinggi air
+      value: 80%
+      normalRange: di atas 50%
+      abnormal: 0
+    - label: Kekeruhan
+      value: 15 NTU
+      normalRange: di bawah 3 NTU
+      abnormal: 1
+    - label: Bakteri E. coli
+      value: 0 per 100 mL
+      normalRange: 0 per 100 mL
+      abnormal: 0
+  symptomTurbidity: 80
+  fixOptions:
+  - Buang lumpur dari dasar bak lewat katup
+  - Naikkan dosis tawas
+  - Cuci balik (backwash) saringan
+  correctFix: 0
+  fixExplanation: Benar! Lumpur yang terlalu tinggi ikut terbawa air keluar dari bak pengendap. Lumpur harus dibuang rutin lewat katup di dasar bak.

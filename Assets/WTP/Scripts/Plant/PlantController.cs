@@ -16,6 +16,9 @@ namespace WTP.Plant
         /// </summary>
         static readonly float[] TurbidityAfterUnit = { 150f, 140f, 110f, 20f, 2f, 2f, 2f };
 
+        /// <summary>Kekeruhan air setelah keluar dari unit ini (dipakai juga oleh simulasi Rakit).</summary>
+        public static float TurbidityAfter(UnitType unit) => TurbidityAfterUnit[(int)unit];
+
         [Tooltip("Urutan: Intake, Koagulasi, Flokulasi, Sedimentasi, Filtrasi, Desinfeksi, Reservoir")]
         [SerializeField] WTPUnit[] units = new WTPUnit[7];
         [Tooltip("Lampu rumah di kota, menyala sesuai jumlah unit yang berfungsi")]

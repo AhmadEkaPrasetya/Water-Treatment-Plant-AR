@@ -1,0 +1,122 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8425aae45154a5a4aa4dab1bacd3c896, type: 3}
+  m_Name: Kasus_1_AirKeruh
+  m_EditorClassIdentifier: Assembly-CSharp::WTP.Gameplay.Detektif.CaseData
+  title: Air Keruh di Kampung Hilir
+  reporter: Bu Sari
+  report: Air keran saya keruh kecokelatan sejak kemarin sore. Mau masak jadi takut!
+  intro:
+  - speaker: {fileID: 11400000, guid: af4daadbae8426347b28771114757740, type: 2}
+    text: 'Selamat datang di Bagian Detektif, {player}! Warga mulai mengirim laporan kerusakan. Tugas kita: cari unit penyebabnya.'
+  - speaker: {fileID: 11400000, guid: af4daadbae8426347b28771114757740, type: 2}
+    text: Tap tombol unit untuk melihat datanya, lalu bandingkan dengan batas normal. Tiga pemeriksaan pertama gratis.
+  - speaker: {fileID: 11400000, guid: af4daadbae8426347b28771114757740, type: 2}
+    text: 'Ingat: kalau satu unit rusak, unit-unit sesudahnya ikut tidak normal. Biang keroknya adalah unit PALING HULU yang datanya tidak normal. Lihat juga warna air di AR!'
+  outro:
+  - speaker: {fileID: 11400000, guid: af4daadbae8426347b28771114757740, type: 2}
+    text: Kasus pertama beres! Bu Sari sudah bisa masak lagi. Air keruh itu ternyata berawal dari pompa tawas yang mati.
+  faultyUnit: 1
+  units:
+  - unit: 0
+    measurements:
+    - label: Kekeruhan air sungai
+      value: 150 NTU
+      normalRange: di bawah 200 NTU
+      abnormal: 0
+    - label: Debit air masuk
+      value: 100 L/detik
+      normalRange: 90-110 L/detik
+      abnormal: 0
+    - label: Saringan sampah
+      value: bersih
+      normalRange: bersih
+      abnormal: 0
+  - unit: 1
+    measurements:
+    - label: Dosis tawas
+      value: 0 mg/L
+      normalRange: 20-40 mg/L
+      abnormal: 1
+    - label: pH air
+      value: 7,0
+      normalRange: 6,5-8,5
+      abnormal: 0
+    - label: Pengaduk cepat
+      value: berputar
+      normalRange: berputar
+      abnormal: 0
+  - unit: 2
+    measurements:
+    - label: Kecepatan aduk
+      value: 40 rpm
+      normalRange: 20-60 rpm
+      abnormal: 0
+    - label: Ukuran flok
+      value: tidak terbentuk
+      normalRange: besar, mudah mengendap
+      abnormal: 1
+  - unit: 3
+    measurements:
+    - label: Tinggi lumpur di dasar
+      value: 30%
+      normalRange: di bawah 60%
+      abnormal: 0
+    - label: Kekeruhan air keluar
+      value: 135 NTU
+      normalRange: di bawah 25 NTU
+      abnormal: 1
+  - unit: 4
+    measurements:
+    - label: Kekeruhan air keluar
+      value: 40 NTU
+      normalRange: di bawah 3 NTU
+      abnormal: 1
+    - label: Hambatan saringan
+      value: 1,9 m
+      normalRange: di bawah 1,5 m
+      abnormal: 1
+    - label: Debit air keluar
+      value: 100 L/detik
+      normalRange: 90-110 L/detik
+      abnormal: 0
+  - unit: 5
+    measurements:
+    - label: Sisa klorin
+      value: 0,3 mg/L
+      normalRange: 0,2-0,5 mg/L
+      abnormal: 0
+    - label: Stok klorin
+      value: 70%
+      normalRange: di atas 20%
+      abnormal: 0
+  - unit: 6
+    measurements:
+    - label: Tinggi air
+      value: 80%
+      normalRange: di atas 50%
+      abnormal: 0
+    - label: Kekeruhan
+      value: 40 NTU
+      normalRange: di bawah 3 NTU
+      abnormal: 1
+    - label: Bakteri E. coli
+      value: 0 per 100 mL
+      normalRange: 0 per 100 mL
+      abnormal: 0
+  symptomTurbidity: 120
+  fixOptions:
+  - Perbaiki pompa dosis tawas yang mati
+  - Ganti pasir di saringan
+  - Tambah dosis klorin
+  correctFix: 0
+  fixExplanation: Tepat! Tanpa tawas, kotoran halus tidak menggumpal, jadi lolos dari bak pengendap dan menyumbat saringan. Begitu pompa tawas jalan lagi, semuanya ikut normal.

@@ -19,9 +19,11 @@ namespace WTP.Progress
             Mathf.Clamp(miniGameScore, 0, MaxMiniGameScore)
             + Mathf.Clamp(correctAnswers, 0, QuizQuestionsPerLevel) * PointsPerCorrectAnswer;
 
-        public static int StarsFor(int levelScore)
+        public static int StarsFor(int levelScore) => StarsForRatio((float)levelScore / MaxLevelScore);
+
+        /// <summary>Bintang dari persentase skor (0..1). Dipakai semua bagian supaya aturannya sama.</summary>
+        public static int StarsForRatio(float ratio)
         {
-            float ratio = (float)levelScore / MaxLevelScore;
             if (ratio >= 0.9f) return 3;
             if (ratio >= 0.6f) return 2;
             return 1;

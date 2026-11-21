@@ -1,0 +1,118 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8425aae45154a5a4aa4dab1bacd3c896, type: 3}
+  m_Name: Kasus_5_AirMenetes
+  m_EditorClassIdentifier: Assembly-CSharp::WTP.Gameplay.Detektif.CaseData
+  title: Air Keran Cuma Menetes
+  reporter: Bu Wati
+  report: Air di rumah saya jernih, tapi keluarnya cuma menetes. Ngisi ember setengah jam!
+  intro:
+  - speaker: {fileID: 11400000, guid: af4daadbae8426347b28771114757740, type: 2}
+    text: Kali ini airnya jernih, tapi alirannya lemah. Reservoir hampir kosong. Apa penyebabnya, {player}?
+  outro:
+  - speaker: {fileID: 11400000, guid: af4daadbae8426347b28771114757740, type: 2}
+    text: 'Mantap! Reservoir kosong itu cuma akibatnya. Penyebabnya ada di hulunya: saringan yang tersumbat.'
+  faultyUnit: 4
+  units:
+  - unit: 0
+    measurements:
+    - label: Kekeruhan air sungai
+      value: 150 NTU
+      normalRange: di bawah 200 NTU
+      abnormal: 0
+    - label: Debit air masuk
+      value: 100 L/detik
+      normalRange: 90-110 L/detik
+      abnormal: 0
+    - label: Saringan sampah
+      value: bersih
+      normalRange: bersih
+      abnormal: 0
+  - unit: 1
+    measurements:
+    - label: Dosis tawas
+      value: 30 mg/L
+      normalRange: 20-40 mg/L
+      abnormal: 0
+    - label: pH air
+      value: 7,0
+      normalRange: 6,5-8,5
+      abnormal: 0
+    - label: Pengaduk cepat
+      value: berputar
+      normalRange: berputar
+      abnormal: 0
+  - unit: 2
+    measurements:
+    - label: Kecepatan aduk
+      value: 40 rpm
+      normalRange: 20-60 rpm
+      abnormal: 0
+    - label: Ukuran flok
+      value: besar
+      normalRange: besar, mudah mengendap
+      abnormal: 0
+  - unit: 3
+    measurements:
+    - label: Tinggi lumpur di dasar
+      value: 30%
+      normalRange: di bawah 60%
+      abnormal: 0
+    - label: Kekeruhan air keluar
+      value: 20 NTU
+      normalRange: di bawah 25 NTU
+      abnormal: 0
+  - unit: 4
+    measurements:
+    - label: Kekeruhan air keluar
+      value: 2 NTU
+      normalRange: di bawah 3 NTU
+      abnormal: 0
+    - label: Hambatan saringan
+      value: 3,2 m
+      normalRange: di bawah 1,5 m
+      abnormal: 1
+    - label: Debit air keluar
+      value: 35 L/detik
+      normalRange: 90-110 L/detik
+      abnormal: 1
+  - unit: 5
+    measurements:
+    - label: Sisa klorin
+      value: 0,3 mg/L
+      normalRange: 0,2-0,5 mg/L
+      abnormal: 0
+    - label: Stok klorin
+      value: 70%
+      normalRange: di atas 20%
+      abnormal: 0
+  - unit: 6
+    measurements:
+    - label: Tinggi air
+      value: 15%
+      normalRange: di atas 50%
+      abnormal: 1
+    - label: Kekeruhan
+      value: 2 NTU
+      normalRange: di bawah 3 NTU
+      abnormal: 0
+    - label: Bakteri E. coli
+      value: 0 per 100 mL
+      normalRange: 0 per 100 mL
+      abnormal: 0
+  symptomTurbidity: 2
+  fixOptions:
+  - Ganti pompa di reservoir
+  - Cuci balik (backwash) saringan yang tersumbat
+  - Tambah dosis klorin
+  correctFix: 1
+  fixExplanation: 'Betul! Saringan yang penuh kotoran membuat air sulit lewat, jadi reservoir tidak terisi. Saringan dibersihkan dengan cuci balik: air dipompa dari bawah supaya kotorannya terangkat.'

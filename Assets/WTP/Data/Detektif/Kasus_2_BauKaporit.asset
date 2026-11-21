@@ -1,0 +1,118 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8425aae45154a5a4aa4dab1bacd3c896, type: 3}
+  m_Name: Kasus_2_BauKaporit
+  m_EditorClassIdentifier: Assembly-CSharp::WTP.Gameplay.Detektif.CaseData
+  title: Bau Kaporit Menyengat
+  reporter: Pak Joko
+  report: Airnya jernih, tapi baunya kaporit banget. Dipakai mandi, mata saya sampai perih!
+  intro:
+  - speaker: {fileID: 11400000, guid: af4daadbae8426347b28771114757740, type: 2}
+    text: 'Laporan kali ini aneh, {player}: airnya jernih, tapi warga mengeluh baunya. Air jernih belum tentu sudah benar!'
+  outro:
+  - speaker: {fileID: 11400000, guid: af4daadbae8426347b28771114757740, type: 2}
+    text: Mantap! Dosis klorin sudah normal. Stok klorin yang tinggal sedikit juga jadi bukti dosisnya kebanyakan.
+  faultyUnit: 5
+  units:
+  - unit: 0
+    measurements:
+    - label: Kekeruhan air sungai
+      value: 150 NTU
+      normalRange: di bawah 200 NTU
+      abnormal: 0
+    - label: Debit air masuk
+      value: 100 L/detik
+      normalRange: 90-110 L/detik
+      abnormal: 0
+    - label: Saringan sampah
+      value: bersih
+      normalRange: bersih
+      abnormal: 0
+  - unit: 1
+    measurements:
+    - label: Dosis tawas
+      value: 30 mg/L
+      normalRange: 20-40 mg/L
+      abnormal: 0
+    - label: pH air
+      value: 7,0
+      normalRange: 6,5-8,5
+      abnormal: 0
+    - label: Pengaduk cepat
+      value: berputar
+      normalRange: berputar
+      abnormal: 0
+  - unit: 2
+    measurements:
+    - label: Kecepatan aduk
+      value: 40 rpm
+      normalRange: 20-60 rpm
+      abnormal: 0
+    - label: Ukuran flok
+      value: besar
+      normalRange: besar, mudah mengendap
+      abnormal: 0
+  - unit: 3
+    measurements:
+    - label: Tinggi lumpur di dasar
+      value: 30%
+      normalRange: di bawah 60%
+      abnormal: 0
+    - label: Kekeruhan air keluar
+      value: 20 NTU
+      normalRange: di bawah 25 NTU
+      abnormal: 0
+  - unit: 4
+    measurements:
+    - label: Kekeruhan air keluar
+      value: 2 NTU
+      normalRange: di bawah 3 NTU
+      abnormal: 0
+    - label: Hambatan saringan
+      value: 0,8 m
+      normalRange: di bawah 1,5 m
+      abnormal: 0
+    - label: Debit air keluar
+      value: 100 L/detik
+      normalRange: 90-110 L/detik
+      abnormal: 0
+  - unit: 5
+    measurements:
+    - label: Sisa klorin
+      value: 1,8 mg/L
+      normalRange: 0,2-0,5 mg/L
+      abnormal: 1
+    - label: Stok klorin
+      value: 15%
+      normalRange: di atas 20%
+      abnormal: 1
+  - unit: 6
+    measurements:
+    - label: Tinggi air
+      value: 80%
+      normalRange: di atas 50%
+      abnormal: 0
+    - label: Kekeruhan
+      value: 2 NTU
+      normalRange: di bawah 3 NTU
+      abnormal: 0
+    - label: Bakteri E. coli
+      value: 0 per 100 mL
+      normalRange: 0 per 100 mL
+      abnormal: 0
+  symptomTurbidity: 2
+  fixOptions:
+  - Tambah dosis klorin supaya lebih aman
+  - Kurangi dosis klorin sampai sisa klorin 0,2-0,5 mg/L
+  - Kuras bak sedimentasi
+  correctFix: 1
+  fixExplanation: 'Betul! Klorin memang membunuh kuman, tapi kalau kebanyakan malah bau menyengat dan bikin perih. Takarannya harus pas: sisa klorin 0,2-0,5 mg/L.'

@@ -1,0 +1,117 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4c4ba837c504f448b85c08995261b2e, type: 3}
+  m_Name: Rakit_3_PeresmianDimajukan
+  m_EditorClassIdentifier: Assembly-CSharp::WTP.Gameplay.Rakit.AssemblyLevelData
+  title: Peresmian Dimajukan
+  budget: 8500
+  intro:
+  - speaker: {fileID: 11400000, guid: c33d885d67938624193e5ed931950dc3, type: 2}
+    text: Berita besar! Peresmian WTP dimajukan jadi minggu depan, pas hari ulang tahun saya. Anggaran tinggal 8,5 miliar, sisanya untuk kue ulang tahun... eh, konsumsi.
+  - speaker: {fileID: 11400000, guid: c33d885d67938624193e5ed931950dc3, type: 2}
+    text: Kalau saringan pasir kemahalan, pakai kain kasa saja. Kolam ikan hias juga boleh, biar tamu senang.
+  - speaker: {fileID: 11400000, guid: af4daadbae8426347b28771114757740, type: 2}
+    text: 'Anggaran makin mepet, {player}. Hitung baik-baik: ketujuh unit WTP harus terpasang, jangan diganti barang murahan.'
+  outro:
+  - speaker: {fileID: 11400000, guid: af4daadbae8426347b28771114757740, type: 2}
+    text: Luar biasa, {player}! WTP baru berdiri lengkap walau anggarannya dipangkas berkali-kali.
+  - speaker: {fileID: 11400000, guid: 9f765101d07aa104f9f660e090b26c20, type: 2}
+    text: Pak Wacana, apa tanggapan Bapak soal WTP yang selesai tanpa gapura dan patung?
+  - speaker: {fileID: 11400000, guid: c33d885d67938624193e5ed931950dc3, type: 2}
+    text: Ehm... itu memang rencana saya dari awal! Air bersih untuk rakyat!
+  - speaker: {fileID: 11400000, guid: af4daadbae8426347b28771114757740, type: 2}
+    text: Terserah dia, deh. Tapi tunggu... laporan kerusakan dari warga mulai berdatangan lagi. Sepertinya ada yang aneh di hulu sungai.
+  cards:
+  - displayName: Intake
+    kind: 0
+    unit: 0
+    cost: 800
+    description: Pintu masuk air sungai. Saringan kasar menahan sampah, lalu pompa menarik air ke WTP.
+    placedLine: 
+    simulationNote: 
+  - displayName: Koagulasi
+    kind: 0
+    unit: 1
+    cost: 700
+    description: Bak pengaduk cepat. Tawas dicampur supaya kotoran halus saling menempel.
+    placedLine: 
+    simulationNote: 
+  - displayName: Flokulasi
+    kind: 0
+    unit: 2
+    cost: 900
+    description: Bak pengaduk pelan. Kotoran yang menempel tumbuh jadi gumpalan besar (flok).
+    placedLine: 
+    simulationNote: 
+  - displayName: Sedimentasi
+    kind: 0
+    unit: 3
+    cost: 1500
+    description: Bak pengendap besar. Flok yang berat turun ke dasar jadi lumpur.
+    placedLine: 
+    simulationNote: 
+  - displayName: Filtrasi
+    kind: 0
+    unit: 4
+    cost: 1800
+    description: Saringan pasir dan kerikil. Menangkap partikel kecil yang tidak ikut mengendap.
+    placedLine: 
+    simulationNote: 
+  - displayName: Desinfeksi
+    kind: 0
+    unit: 5
+    cost: 600
+    description: Pembubuh klorin. Membunuh kuman supaya air aman diminum.
+    placedLine: 
+    simulationNote: 
+  - displayName: Reservoir
+    kind: 0
+    unit: 6
+    cost: 1700
+    description: Tangki penampung air bersih sebelum dialirkan ke rumah warga.
+    placedLine: 
+    simulationNote: 
+  - displayName: Gapura Selamat Datang
+    kind: 1
+    unit: 0
+    cost: 3000
+    description: 'Usulan Pak Wacana: "Gapura megah biar tamu tahu kota kita maju!"'
+    placedLine: 'Pak Wacana: "Mantap! Gapura itu wajah kota!"'
+    simulationNote: Air lewat di bawah gapura... dan tetap keruh. Gapura tidak mengolah air!
+  - displayName: Patung Wali Kota
+    kind: 1
+    unit: 0
+    cost: 4000
+    description: 'Usulan Pak Wacana: "Patung saya setinggi 10 meter, simbol kepemimpinan!"'
+    placedLine: 'Pak Wacana: "Pilihan cerdas! Warga pasti terinspirasi melihat wajah saya."'
+    simulationNote: Patung wali kota cuma berdiri di situ. Airnya tidak jadi bersih.
+  - displayName: Panggung Peresmian
+    kind: 1
+    unit: 0
+    cost: 2500
+    description: 'Usulan Pak Wacana: "Peresmian harus meriah: panggung, artis, nasi kotak!"'
+    placedLine: 'Pak Wacana: "Jangan lupa undang saya potong pita, ya!"'
+    simulationNote: Panggung dan nasi kotak tidak menjernihkan air. Air tetap keruh.
+  - displayName: Saringan Kain Murah
+    kind: 2
+    unit: 0
+    cost: 300
+    description: Kain kasa sebagai pengganti saringan pasir. Murah meriah!
+    placedLine: 'Pak Wacana: "Hemat anggaran, itu baru namanya efisien!"'
+    simulationNote: Kain kasa langsung jebol dan tidak bisa menahan partikel halus. Ini bukan unit WTP.
+  - displayName: Kolam Ikan Hias
+    kind: 2
+    unit: 0
+    cost: 900
+    description: Kolam koi di halaman WTP. "Biar sejuk dipandang," kata Pak Wacana.
+    placedLine: 'Pak Wacana: "Ikannya nanti saya kasih nama-nama menteri."'
+    simulationNote: Kolam ikan cuma membuat air diam. Tidak ada kotoran yang disaring atau kuman yang dibunuh.

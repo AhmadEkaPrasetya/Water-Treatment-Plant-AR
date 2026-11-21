@@ -1,0 +1,108 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4c4ba837c504f448b85c08995261b2e, type: 3}
+  m_Name: Rakit_2_AnggaranDipotong
+  m_EditorClassIdentifier: Assembly-CSharp::WTP.Gameplay.Rakit.AssemblyLevelData
+  title: Anggaran Dipotong
+  budget: 9500
+  intro:
+  - speaker: {fileID: 11400000, guid: 9f765101d07aa104f9f660e090b26c20, type: 2}
+    text: Pak Wacana, kabarnya anggaran WTP dipotong lagi?
+  - speaker: {fileID: 11400000, guid: c33d885d67938624193e5ed931950dc3, type: 2}
+    text: Bukan dipotong, tapi disesuaikan! Sebagian dipakai untuk studi banding ke luar negeri. Tenang, sisanya 9,5 miliar masih cukup.
+  - speaker: {fileID: 11400000, guid: c33d885d67938624193e5ed931950dc3, type: 2}
+    text: Oh iya, saya juga titip air mancur di depan balai kota. Kan sama-sama urusan air!
+  - speaker: {fileID: 11400000, guid: af4daadbae8426347b28771114757740, type: 2}
+    text: 'Air mancur memang pakai air, tapi tidak membersihkannya. Hati-hati, {player}: kartu yang terdengar mirip urusan air belum tentu unit WTP.'
+  outro:
+  - speaker: {fileID: 11400000, guid: af4daadbae8426347b28771114757740, type: 2}
+    text: Mantap! Kamu tidak terkecoh. Unit WTP dipilih karena fungsinya, bukan karena namanya terdengar mirip.
+  - speaker: {fileID: 11400000, guid: c33d885d67938624193e5ed931950dc3, type: 2}
+    text: Hmm, air mancurnya batal ya... Ya sudah, yang penting saya bisa foto di depan WTP baru.
+  cards:
+  - displayName: Intake
+    kind: 0
+    unit: 0
+    cost: 800
+    description: Pintu masuk air sungai. Saringan kasar menahan sampah, lalu pompa menarik air ke WTP.
+    placedLine: 
+    simulationNote: 
+  - displayName: Koagulasi
+    kind: 0
+    unit: 1
+    cost: 700
+    description: Bak pengaduk cepat. Tawas dicampur supaya kotoran halus saling menempel.
+    placedLine: 
+    simulationNote: 
+  - displayName: Flokulasi
+    kind: 0
+    unit: 2
+    cost: 900
+    description: Bak pengaduk pelan. Kotoran yang menempel tumbuh jadi gumpalan besar (flok).
+    placedLine: 
+    simulationNote: 
+  - displayName: Sedimentasi
+    kind: 0
+    unit: 3
+    cost: 1500
+    description: Bak pengendap besar. Flok yang berat turun ke dasar jadi lumpur.
+    placedLine: 
+    simulationNote: 
+  - displayName: Filtrasi
+    kind: 0
+    unit: 4
+    cost: 1800
+    description: Saringan pasir dan kerikil. Menangkap partikel kecil yang tidak ikut mengendap.
+    placedLine: 
+    simulationNote: 
+  - displayName: Desinfeksi
+    kind: 0
+    unit: 5
+    cost: 600
+    description: Pembubuh klorin. Membunuh kuman supaya air aman diminum.
+    placedLine: 
+    simulationNote: 
+  - displayName: Reservoir
+    kind: 0
+    unit: 6
+    cost: 1700
+    description: Tangki penampung air bersih sebelum dialirkan ke rumah warga.
+    placedLine: 
+    simulationNote: 
+  - displayName: Gapura Selamat Datang
+    kind: 1
+    unit: 0
+    cost: 3000
+    description: 'Usulan Pak Wacana: "Gapura megah biar tamu tahu kota kita maju!"'
+    placedLine: 'Pak Wacana: "Mantap! Gapura itu wajah kota!"'
+    simulationNote: Air lewat di bawah gapura... dan tetap keruh. Gapura tidak mengolah air!
+  - displayName: Patung Wali Kota
+    kind: 1
+    unit: 0
+    cost: 4000
+    description: 'Usulan Pak Wacana: "Patung saya setinggi 10 meter, simbol kepemimpinan!"'
+    placedLine: 'Pak Wacana: "Pilihan cerdas! Warga pasti terinspirasi melihat wajah saya."'
+    simulationNote: Patung wali kota cuma berdiri di situ. Airnya tidak jadi bersih.
+  - displayName: Panggung Peresmian
+    kind: 1
+    unit: 0
+    cost: 2500
+    description: 'Usulan Pak Wacana: "Peresmian harus meriah: panggung, artis, nasi kotak!"'
+    placedLine: 'Pak Wacana: "Jangan lupa undang saya potong pita, ya!"'
+    simulationNote: Panggung dan nasi kotak tidak menjernihkan air. Air tetap keruh.
+  - displayName: Air Mancur Taman
+    kind: 2
+    unit: 0
+    cost: 1200
+    description: Air mancur hias di depan balai kota. Airnya memang berputar-putar...
+    placedLine: 'Pak Wacana: "Cantik, kan? Sama-sama urusan air!"'
+    simulationNote: Air mancur cuma menyemburkan air keruh ke udara. Kotorannya tetap ada.

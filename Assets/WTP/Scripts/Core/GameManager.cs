@@ -131,6 +131,7 @@ namespace WTP.Core
         public void CompleteLevel(int levelIndex, int stars)
         {
             SaveSystem.Data.SetStars(levelIndex, stars);
+            BadgeManager.Evaluate();   // mis. Penjaga Intake (level 1 bintang 3)
             SaveSystem.Save();
             if (Plant != null) Plant.SetWorkingUnitCount(CompletedLevelCount);
             SetState(GameState.Result);

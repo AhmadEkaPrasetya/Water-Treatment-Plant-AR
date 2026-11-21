@@ -25,6 +25,10 @@ namespace WTP.UI.Panels
         [SerializeField] Slider musicSlider;
         [SerializeField] Slider sfxSlider;
 
+        [Header("Layar lain")]
+        [SerializeField] BadgeCollectionPanel badgePanel;
+        [SerializeField] LeaderboardPanel leaderboardPanel;
+
         [Header("Pesan singkat")]
         [SerializeField] TMP_Text toastText;
         [SerializeField] float toastDuration = 2f;
@@ -34,6 +38,8 @@ namespace WTP.UI.Panels
         void Start()
         {
             PlayerData data = SaveSystem.Data;
+            // Berikan badge yang syaratnya sudah terpenuhi (mis. dari simpanan versi lama).
+            BadgeManager.Evaluate();
 
             nameInput.characterLimit = MaxNameLength;
             nameInput.text = data.playerName;
@@ -68,9 +74,8 @@ namespace WTP.UI.Panels
             SceneLoader.Load(SceneLoader.ARPlay);
         }
 
-        // Layar Leaderboard & Badge dikerjakan di Minggu 3.
-        public void OnLeaderboard() => ShowToast("Leaderboard segera hadir!");
-        public void OnBadges() => ShowToast("Koleksi badge segera hadir!");
+        public void OnLeaderboard() => leaderboardPanel.Show();
+        public void OnBadges() => badgePanel.Show();
 
         public void OnOpenSettings() => settingsPanel.SetActive(true);
 

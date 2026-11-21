@@ -17,20 +17,19 @@ namespace WTP.EditorTools
         const string ScenePath = "Assets/WTP/Scenes/ARPlay.unity";
         const string MaterialDir = "Assets/WTP/Materials";
 
-        static readonly Color CardColor = new Color(0.04f, 0.13f, 0.22f, 0.94f);
-        static readonly Color TitleColor = new Color(1f, 0.84f, 0.29f);
-        static readonly Color InfoColor = new Color(0.7f, 0.9f, 1f);
-        static readonly Color ButtonBlue = new Color(0.18f, 0.5f, 0.76f);
-        static readonly Color ButtonYellow = new Color(0.98f, 0.79f, 0.25f);
-        static readonly Color DarkText = new Color(0.08f, 0.14f, 0.2f);
+        internal static readonly Color CardColor = new Color(0.04f, 0.13f, 0.22f, 0.94f);
+        internal static readonly Color TitleColor = new Color(1f, 0.84f, 0.29f);
+        internal static readonly Color InfoColor = new Color(0.7f, 0.9f, 1f);
+        internal static readonly Color ButtonBlue = new Color(0.18f, 0.5f, 0.76f);
+        internal static readonly Color ButtonYellow = new Color(0.98f, 0.79f, 0.25f);
+        internal static readonly Color DarkText = new Color(0.08f, 0.14f, 0.2f);
 
-        static Sprite uiSprite;
+        // internal: dipakai juga oleh builder lain (WTPRakitBuilder).
+        internal static Sprite uiSprite => AssetDatabase.GetBuiltinExtraResource<Sprite>("UI/Skin/UISprite.psd");
 
         [MenuItem("WTP/Build Mini-Game UI")]
         public static void Build()
         {
-            uiSprite = AssetDatabase.GetBuiltinExtraResource<Sprite>("UI/Skin/UISprite.psd");
-
             var scene = EditorSceneManager.GetSceneByPath(ScenePath);
             bool openedHere = !scene.isLoaded;
             if (openedHere) scene = EditorSceneManager.OpenScene(ScenePath, OpenSceneMode.Additive);
@@ -499,11 +498,11 @@ namespace WTP.EditorTools
             return r;
         }
 
-        static Sprite Knob => AssetDatabase.GetBuiltinExtraResource<Sprite>("UI/Skin/Knob.psd");
+        internal static Sprite Knob => AssetDatabase.GetBuiltinExtraResource<Sprite>("UI/Skin/Knob.psd");
 
         // ---------------- Helper UI ----------------
 
-        static RectTransform NewRect(string name, Transform parent)
+        internal static RectTransform NewRect(string name, Transform parent)
         {
             var go = new GameObject(name, typeof(RectTransform));
             go.layer = LayerMask.NameToLayer("UI");
@@ -511,14 +510,14 @@ namespace WTP.EditorTools
             return (RectTransform)go.transform;
         }
 
-        static void Stretch(RectTransform r)
+        internal static void Stretch(RectTransform r)
         {
             r.anchorMin = Vector2.zero;
             r.anchorMax = Vector2.one;
             r.offsetMin = r.offsetMax = Vector2.zero;
         }
 
-        static void SetRect(RectTransform r, Vector2 anchorMin, Vector2 anchorMax, Vector2 pos, Vector2 size)
+        internal static void SetRect(RectTransform r, Vector2 anchorMin, Vector2 anchorMax, Vector2 pos, Vector2 size)
         {
             r.anchorMin = anchorMin;
             r.anchorMax = anchorMax;
@@ -527,7 +526,7 @@ namespace WTP.EditorTools
             r.sizeDelta = size;
         }
 
-        static Image AddImage(RectTransform r, Color color, bool sliced = false)
+        internal static Image AddImage(RectTransform r, Color color, bool sliced = false)
         {
             var img = r.gameObject.AddComponent<Image>();
             img.color = color;
@@ -540,7 +539,7 @@ namespace WTP.EditorTools
         }
 
         /// <summary>Kartu panel lebar penuh (margin 30), menempel di atas (di bawah tombol Menu) atau di bawah layar.</summary>
-        static RectTransform Card(string name, Transform parent, bool top, float height)
+        internal static RectTransform Card(string name, Transform parent, bool top, float height)
         {
             RectTransform card = NewRect(name, parent);
             if (top) SetRect(card, new Vector2(0f, 1f), new Vector2(1f, 1f), new Vector2(0f, -230f), new Vector2(-60f, height));
@@ -550,7 +549,7 @@ namespace WTP.EditorTools
         }
 
         /// <summary>Teks selebar kartu, posisi y diukur dari atas kartu.</summary>
-        static TMP_Text Text(RectTransform parent, string name, string text, float y, float height, float size, Color color)
+        internal static TMP_Text Text(RectTransform parent, string name, string text, float y, float height, float size, Color color)
         {
             RectTransform r = NewRect(name, parent);
             SetRect(r, new Vector2(0f, 1f), new Vector2(1f, 1f), new Vector2(0f, y), new Vector2(-80f, height));
@@ -565,7 +564,7 @@ namespace WTP.EditorTools
             return t;
         }
 
-        static Button MakeButton(RectTransform parent, string name, string label, Vector2 pos, Vector2 size,
+        internal static Button MakeButton(RectTransform parent, string name, string label, Vector2 pos, Vector2 size,
                                  Color color, Color textColor)
         {
             RectTransform r = NewRect(name, parent);

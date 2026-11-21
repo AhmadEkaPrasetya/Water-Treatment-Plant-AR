@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using WTP.Core;
 using WTP.Gameplay.Quiz;
@@ -9,15 +10,14 @@ using WTP.UI.Panels;
 namespace WTP.Gameplay.Belajar
 {
     /// <summary>
-    /// Alur Bagian 1 (Belajar):
-    ///   WTP ditaruh -> (prolog, hanya pertama kali) -> pilih level
+    /// Alur Bagian 1 (Belajar), dibuka SectionController lewat Open():
+    ///   pilih level (atau Kembali ke Pilih Bagian)
     ///   -> penjelasan Tirta -> mini-game -> kuis 3 soal -> hasil & bintang
     ///   -> unit jadi berfungsi di AR -> dialog penutup -> kembali ke pilih level
     /// </summary>
     public class LevelController : MonoBehaviour
     {
         [Header("Konten (Assets/WTP/Data)")]
-        [SerializeField] DialogueScene prologue;
         [Tooltip("7 level urut: Intake ... Reservoir")]
         [SerializeField] LevelData[] levels = new LevelData[7];
         [Tooltip("Mini-game per level (urutan sama). Kosong = langsung ke kuis.")]
@@ -30,6 +30,7 @@ namespace WTP.Gameplay.Belajar
         [SerializeField] LevelResultPanel resultPanel;
 
         PlantController plant;
+        Action onExit;
         int currentLevel = -1;
         int miniGameScore;
 
@@ -38,7 +39,6 @@ namespace WTP.Gameplay.Belajar
         // Start, bukan OnEnable: GameManager dibuat otomatis setelah Awake/OnEnable scene pertama.
         void Start()
         {
-            GameManager.Instance.PlantReady += OnPlantReady;
             GameManager.Instance.StateChanged += OnStateChanged;
             levelSelect.Hide();
             resultPanel.Hide();
@@ -47,26 +47,23 @@ namespace WTP.Gameplay.Belajar
         void OnDestroy()
         {
             if (GameManager.Instance == null) return;
-            GameManager.Instance.PlantReady -= OnPlantReady;
             GameManager.Instance.StateChanged -= OnStateChanged;
         }
 
-        void OnPlantReady(PlantController placedPlant)
+        /// <summary>Dipanggil SectionController saat pemain memilih Belajar.</summary>
+        public void Open(PlantController placedPlant, Action onExitSection)
         {
             plant = placedPlant;
-            if (!SaveSystem.Data.prologueSeen && prologue != null)
-            {
-                dialogue.Play(prologue.lines, PlayerName, () =>
-                {
-                    SaveSystem.Data.prologueSeen = true;
-                    SaveSystem.Save();
-                    ShowLevelSelect();
-                });
-            }
-            else
-            {
-                ShowLevelSelect();
-            }
+            onExit = onExitSection;
+            ShowLevelSelect();
+        }
+
+        void Exit()
+        {
+            levelSelect.Hide();
+            Action callback = onExit;
+            onExit = null;
+            callback?.Invoke();
         }
 
         // WTP ditaruh ulang -> batalkan apa pun yang sedang berjalan.
@@ -80,6 +77,7 @@ namespace WTP.Gameplay.Belajar
             if (currentLevel >= 0 && miniGames[currentLevel] != null) miniGames[currentLevel].Cancel();
             currentLevel = -1;
             plant = null;
+            onExit = null;
         }
 
         void ShowLevelSelect()
@@ -94,7 +92,7 @@ namespace WTP.Gameplay.Belajar
                 stars[i] = SaveSystem.Data.belajarStars[i];
                 unlocked[i] = SaveSystem.Data.IsLevelUnlocked(i);
             }
-            levelSelect.Show(titles, stars, unlocked, StartLevel);
+            levelSelect.Show(titles, stars, unlocked, StartLevel, Exit);
         }
 
         void StartLevel(int levelIndex)

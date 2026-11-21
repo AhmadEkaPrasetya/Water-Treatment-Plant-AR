@@ -1,0 +1,136 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8425aae45154a5a4aa4dab1bacd3c896, type: 3}
+  m_Name: Kasus_6_AbuDariHulu
+  m_EditorClassIdentifier: Assembly-CSharp::WTP.Gameplay.Detektif.CaseData
+  title: Air Hitam dari Hulu
+  reporter: Banyak warga
+  report: Air di seluruh kota keruh kehitaman dan berbau asap! Tolong!
+  intro:
+  - speaker: {fileID: 11400000, guid: af4daadbae8426347b28771114757740, type: 2}
+    text: Gawat, {player}! Laporan datang dari seluruh kota sekaligus. Ini kasus terbesar kita.
+  - speaker: {fileID: 11400000, guid: af4daadbae8426347b28771114757740, type: 2}
+    text: Periksa semua data dengan teliti. Kalau semua unit kacau, mungkin masalahnya sudah ada sejak air masuk.
+  outro:
+  - speaker: {fileID: 11400000, guid: af4daadbae8426347b28771114757740, type: 2}
+    text: Kita ikuti sungai ke arah hulu... Lihat, {player}! Ada lahan yang sedang dibakar. Asap dan abunya jatuh ke sungai!
+  - speaker: {fileID: 11400000, guid: de32f7d927704414d86235e7ff325747, type: 2}
+    text: Ini lahan saya, saya hanya membersihkannya untuk ditanami lagi. Membakar itu cara paling cepat dan paling murah. Lagi pula asapnya nanti hilang sendiri.
+  - speaker: {fileID: 11400000, guid: af4daadbae8426347b28771114757740, type: 2}
+    text: Asapnya memang hilang, Pak, tapi dampaknya tidak. Abu dan arang terbawa hujan ke sungai sehingga air baku sangat keruh dan WTP butuh jauh lebih banyak tawas.
+  - speaker: {fileID: 11400000, guid: af4daadbae8426347b28771114757740, type: 2}
+    text: Tanah yang terbakar kehilangan tumbuhan penahan air, jadi hujan langsung menjadi banjir dan longsor lumpur. Kalau yang terbakar lahan gambut, apinya bisa menjalar di bawah tanah berminggu-minggu.
+  - speaker: {fileID: 11400000, guid: af4daadbae8426347b28771114757740, type: 2}
+    text: Kabut asapnya juga membuat warga sakit pernapasan. Membuka lahan dengan membakar itu dilarang undang-undang.
+  - speaker: {fileID: 11400000, guid: af4daadbae8426347b28771114757740, type: 2}
+    text: 'Ada cara yang lebih aman, yaitu Pembukaan Lahan Tanpa Bakar (PLTB): sisa tanaman dicacah lalu dijadikan kompos.'
+  - speaker: {fileID: 11400000, guid: de32f7d927704414d86235e7ff325747, type: 2}
+    text: Hmph... Kompos, katamu? Kita lihat saja nanti.
+  - speaker: {fileID: 11400000, guid: af4daadbae8426347b28771114757740, type: 2}
+    text: 'Ingat, operator: air bersih tidak dimulai dari WTP, tapi dari hutan dan sungai yang terjaga.'
+  - speaker: {fileID: 11400000, guid: af4daadbae8426347b28771114757740, type: 2}
+    text: Bukti sudah kita kumpulkan, {player}. Tapi musim kemarau sebentar lagi datang... WTP harus siap menghadapi musim asap!
+  faultyUnit: 0
+  units:
+  - unit: 0
+    measurements:
+    - label: Kekeruhan air sungai
+      value: 900 NTU, hitam keabu-abuan
+      normalRange: di bawah 200 NTU
+      abnormal: 1
+    - label: Debit air masuk
+      value: 100 L/detik
+      normalRange: 90-110 L/detik
+      abnormal: 0
+    - label: Saringan sampah
+      value: bersih
+      normalRange: bersih
+      abnormal: 0
+  - unit: 1
+    measurements:
+    - label: Dosis tawas
+      value: 30 mg/L
+      normalRange: 20-40 mg/L
+      abnormal: 0
+    - label: pH air
+      value: 7,0
+      normalRange: 6,5-8,5
+      abnormal: 0
+    - label: Pengaduk cepat
+      value: berputar
+      normalRange: berputar
+      abnormal: 0
+  - unit: 2
+    measurements:
+    - label: Kecepatan aduk
+      value: 40 rpm
+      normalRange: 20-60 rpm
+      abnormal: 0
+    - label: Ukuran flok
+      value: kecil, tawas tidak cukup
+      normalRange: besar, mudah mengendap
+      abnormal: 1
+  - unit: 3
+    measurements:
+    - label: Tinggi lumpur di dasar
+      value: 85%
+      normalRange: di bawah 60%
+      abnormal: 1
+    - label: Kekeruhan air keluar
+      value: 300 NTU
+      normalRange: di bawah 25 NTU
+      abnormal: 1
+  - unit: 4
+    measurements:
+    - label: Kekeruhan air keluar
+      value: 60 NTU
+      normalRange: di bawah 3 NTU
+      abnormal: 1
+    - label: Hambatan saringan
+      value: 2,6 m
+      normalRange: di bawah 1,5 m
+      abnormal: 1
+    - label: Debit air keluar
+      value: 100 L/detik
+      normalRange: 90-110 L/detik
+      abnormal: 0
+  - unit: 5
+    measurements:
+    - label: Sisa klorin
+      value: 0,3 mg/L
+      normalRange: 0,2-0,5 mg/L
+      abnormal: 0
+    - label: Stok klorin
+      value: 70%
+      normalRange: di atas 20%
+      abnormal: 0
+  - unit: 6
+    measurements:
+    - label: Tinggi air
+      value: 80%
+      normalRange: di atas 50%
+      abnormal: 0
+    - label: Kekeruhan
+      value: 60 NTU
+      normalRange: di bawah 3 NTU
+      abnormal: 1
+    - label: Bakteri E. coli
+      value: 0 per 100 mL
+      normalRange: 0 per 100 mL
+      abnormal: 0
+  symptomTurbidity: 140
+  fixOptions:
+  - Cuci balik (backwash) saringan
+  - Naikkan dosis tawas lewat jar test ulang, lalu telusuri sumber abu di hulu
+  - Bersihkan saringan sampah intake
+  correctFix: 1
+  fixExplanation: 'Tepat! Air bakunya sendiri yang rusak: 900 NTU, penuh abu dan arang. Untuk sementara dosis tawas dinaikkan lewat jar test, tapi sumber masalahnya ada di hulu sungai. Ayo kita telusuri!'
