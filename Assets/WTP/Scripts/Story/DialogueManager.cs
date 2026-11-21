@@ -19,6 +19,8 @@ namespace WTP.Story
         [SerializeField] Button tapArea;
         [SerializeField] Image nameTag;
         [SerializeField] TMP_Text nameText;
+        [Tooltip("Potret tokoh yang sedang bicara (kanan atas kotak dialog). Boleh kosong.")]
+        [SerializeField] Image portraitImage;
         [SerializeField] TMP_Text lineText;
         [SerializeField] GameObject nextIndicator;
         [Tooltip("Huruf per detik")]
@@ -70,6 +72,13 @@ namespace WTP.Story
             Character speaker = line.speaker;
             nameText.text = speaker != null ? speaker.displayName : "";
             nameTag.color = speaker != null ? speaker.nameColor : Color.gray;
+            if (portraitImage != null)
+            {
+                // Tokoh tanpa potret (mis. Wartawan) -> potret disembunyikan.
+                bool hasPortrait = speaker != null && speaker.portrait != null;
+                portraitImage.gameObject.SetActive(hasPortrait);
+                if (hasPortrait) portraitImage.sprite = speaker.portrait;
+            }
             lineText.text = line.text.Replace("{player}", playerName);
 
             if (typing != null) StopCoroutine(typing);

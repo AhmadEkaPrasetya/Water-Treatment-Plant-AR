@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51822b202d08a1340bdeca9af4e83260, type: 3}
+  m_Name: ShiftIntro
+  m_EditorClassIdentifier: Assembly-CSharp::WTP.Story.DialogueScene
+  lines:
+  - speaker: {fileID: 11400000, guid: af4daadbae8426347b28771114757740, type: 2}
+    text: 'Musim kemarau tiba, {player}. Ini musim asap: hujan abu, kabut, dan banjir lumpur bisa datang kapan saja.'
+  - speaker: {fileID: 11400000, guid: af4daadbae8426347b28771114757740, type: 2}
+    text: 'Tugasmu: jaga WTP selama 3 menit. Geser dosis tawas, dosis klorin, dan pompa intake.'
+  - speaker: {fileID: 11400000, guid: af4daadbae8426347b28771114757740, type: 2}
+    text: 'Targetnya: kekeruhan di bawah 3 NTU, sisa klorin 0,2 sampai 0,5 mg/L, dan reservoir 20 sampai 95 persen.'
+  - speaker: {fileID: 11400000, guid: af4daadbae8426347b28771114757740, type: 2}
+    text: Kalau air keruh, bau kaporit, atau mati, kepuasan warga turun. Kalau kepuasan habis, shift gagal. Lampu kota di AR ikut redup, lho!
+  - speaker: {fileID: 11400000, guid: af4daadbae8426347b28771114757740, type: 2}
+    text: 'Tips: air yang lebih keruh butuh tawas lebih banyak, dan klorin juga lebih cepat habis. Semangat, operator!'

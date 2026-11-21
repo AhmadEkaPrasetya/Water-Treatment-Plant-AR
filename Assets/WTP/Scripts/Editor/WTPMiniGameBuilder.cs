@@ -588,7 +588,7 @@ namespace WTP.EditorTools
         }
 
         /// <summary>Slider besar (mudah digeser jari) memakai template bawaan Unity lalu diperbesar.</summary>
-        static Slider MakeSlider(RectTransform parent, float y, float min, float max, bool wholeNumbers)
+        internal static Slider MakeSlider(RectTransform parent, float y, float min, float max, bool wholeNumbers)
         {
             var resources = new DefaultControls.Resources
             {

@@ -2,6 +2,7 @@ using UnityEngine;
 using WTP.Gameplay.Belajar;
 using WTP.Gameplay.Detektif;
 using WTP.Gameplay.Rakit;
+using WTP.Gameplay.Shift;
 using WTP.Plant;
 using WTP.Progress;
 using WTP.Story;
@@ -30,6 +31,7 @@ namespace WTP.Core
         [SerializeField] LevelController belajar;
         [SerializeField] AssemblyManager rakit;
         [SerializeField] DetectiveManager detektif;
+        [SerializeField] ShiftManager shift;
 
         PlantController plant;
 
@@ -113,8 +115,9 @@ namespace WTP.Core
                     sectionPanel.Hide();
                     detektif.Open(plant, ShowMenu);
                     break;
-                default:
-                    sectionPanel.SetStatus("Bagian ini sedang dibangun. Segera hadir!");
+                case Section.Shift:
+                    sectionPanel.Hide();
+                    shift.Open(plant, ShowMenu);
                     break;
             }
         }

@@ -28,6 +28,13 @@ namespace WTP.Plant
 
         public WTPUnit GetUnit(UnitType type) => units[(int)type];
 
+        /// <summary>Nyalakan lampu kota sebanyak 'level' (0..1) bagian, dipakai Operator Shift untuk kepuasan warga.</summary>
+        public void SetCityLevel(float level)
+        {
+            if (cityLights != null)
+                cityLights.SetWorkingUnits(Mathf.RoundToInt(Mathf.Clamp01(level) * units.Length), units.Length, false);
+        }
+
         /// <summary>
         /// Tampilkan hasil proses sesuai jumlah unit yang sudah berfungsi (level Belajar selesai).
         /// Unit yang belum berfungsi dianggap rusak: air yang lewat tidak dijernihkan,

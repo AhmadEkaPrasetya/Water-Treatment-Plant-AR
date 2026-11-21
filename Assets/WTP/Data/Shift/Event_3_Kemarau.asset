@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb75fe8f20fb79d4ab5335a61b5b9c81, type: 3}
+  m_Name: Event_3_Kemarau
+  m_EditorClassIdentifier: Assembly-CSharp::WTP.Gameplay.Shift.ShiftEvent
+  title: Kemarau Panjang
+  warning: Debit sungai turun, padahal warga butuh lebih banyak air. Buka pompa lebih besar dan jaga reservoir!
+  duration: 25
+  turbidityMultiplier: 0.8
+  demandMultiplier: 1.5
+  pumpCapMultiplier: 0.7
+  satisfactionDrain: 0
+  hideReadings: 0
+  smoke: 0
+  isInspection: 0
+  inspectionText: 
+  acceptLabel: Turuti
+  refuseLabel: Tolak
+  acceptResult: 
+  refuseResult: 
+  acceptPumpOffSeconds: 15
+  acceptSatisfaction: -10
+  refuseSatisfaction: 5

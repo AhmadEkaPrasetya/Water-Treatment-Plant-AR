@@ -30,6 +30,9 @@ namespace WTP.Progress
 
         public List<string> badges = new List<string>();
         public int bestShiftScore;
+        public bool shiftIntroSeen;
+        /// <summary>Pernah menyelesaikan Operator Shift (tamat). Cutscene tamat hanya diputar sekali.</summary>
+        public bool shiftCompleted;
 
         // Pengaturan
         public float musicVolume = 0.8f;
