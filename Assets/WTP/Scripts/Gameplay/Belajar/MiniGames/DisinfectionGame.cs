@@ -70,6 +70,8 @@ namespace WTP.Gameplay.Belajar
 
             // Air di unit Desinfeksi ikut berubah: jernih kalau aman, sedikit keruh kalau tidak.
             Unit.SetClarity(good ? 1f : 0.75f);
+            // Kuman di bak AR: banyak kalau sisa klorin 0, hilang kalau sudah mencapai batas aman.
+            Effects.SetGerms(1f - Mathf.Clamp01(residual / WaterQuality.MinSafeChlorine));
 
             if (elapsed >= duration)
             {

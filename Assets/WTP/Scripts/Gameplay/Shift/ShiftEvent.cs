@@ -28,6 +28,8 @@ namespace WTP.Gameplay.Shift
         public bool hideReadings;
         [Tooltip("Kabut asap: layar & dunia AR berkabut")]
         public bool smoke;
+        [Tooltip("Hujan abu: partikel abu turun di atas WTP AR")]
+        public bool ash;
 
         [Header("Inspeksi (pilihan pemain)")]
         public bool isInspection;

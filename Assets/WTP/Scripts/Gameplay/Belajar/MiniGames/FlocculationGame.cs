@@ -93,6 +93,7 @@ namespace WTP.Gameplay.Belajar
             // Tampilan.
             dialHandle.localRotation *= Quaternion.Euler(0f, 0f, -speed * dt);
             foreach (Transform p in paddles) p.Rotate(0f, speed * 0.5f * dt, 0f, Space.Self);
+            Effects.SetFloc(floc, speed * 0.5f);   // partikel flok di bak AR ikut membesar & berputar
             speedFill.anchorMax = new Vector2(Mathf.Clamp01(speed / maxShownSpeed), 1f);
             speedFillImage.color = tooFast ? fastColor : tooSlow ? slowColor : goodColor;
             flocFill.anchorMax = new Vector2(floc, 1f);

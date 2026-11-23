@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using WTP.Audio;
 
 namespace WTP.Gameplay.Quiz
 {
@@ -83,6 +84,7 @@ namespace WTP.Gameplay.Quiz
             Question q = questions[current];
             bool correct = order[buttonIndex] == q.correctIndex;
             if (correct) correctCount++;
+            AudioManager.Play(correct ? Sfx.Correct : Sfx.Wrong);
 
             // Kunci semua tombol, warnai jawaban benar hijau dan pilihan salah merah.
             for (int i = 0; i < optionButtons.Length; i++)

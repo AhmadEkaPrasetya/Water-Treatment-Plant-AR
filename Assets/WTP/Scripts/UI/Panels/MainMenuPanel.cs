@@ -2,6 +2,7 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using WTP.Audio;
 using WTP.Core;
 using WTP.Progress;
 
@@ -45,6 +46,13 @@ namespace WTP.UI.Panels
             nameInput.text = data.playerName;
             musicSlider.value = data.musicVolume;
             sfxSlider.value = data.sfxVolume;
+            // Volume langsung berubah saat slider digeser, supaya pemain bisa mendengar hasilnya.
+            musicSlider.onValueChanged.AddListener(AudioManager.SetMusicVolume);
+            sfxSlider.onValueChanged.AddListener(v =>
+            {
+                AudioManager.SetSfxVolume(v);
+                AudioManager.Play(Sfx.Tick);
+            });
 
             progressText.text = data.HasName
                 ? $"Halo, {data.playerName}!  Bintang: {data.TotalStars}/{PlayerData.BelajarLevelCount * 3}"

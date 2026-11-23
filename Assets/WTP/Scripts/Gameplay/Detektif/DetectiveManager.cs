@@ -4,6 +4,7 @@ using System.Text;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using WTP.Audio;
 using WTP.Core;
 using WTP.Plant;
 using WTP.Progress;
@@ -149,6 +150,7 @@ namespace WTP.Gameplay.Detektif
 
         void HideAll()
         {
+            if (plant != null) plant.Effects.StopAll();
             caseSelectPanel.SetActive(false);
             topPanel.SetActive(false);
             bottomPanel.SetActive(false);
@@ -217,6 +219,7 @@ namespace WTP.Gameplay.Detektif
             float clarity = new WaterQuality(Case.symptomTurbidity).Clarity;
             for (int i = (int)Case.faultyUnit; i < plant.Units.Count; i++)
                 plant.Units[i].SetClarity(clarity);
+            plant.Effects.SetAsh(Case.ashFall);
         }
 
         // ------------------------------------------------------------ inspeksi
@@ -262,11 +265,13 @@ namespace WTP.Gameplay.Detektif
 
             if (selectedUnit == (int)Case.faultyUnit)
             {
+                AudioManager.Play(Sfx.Correct);
                 ShowFixQuestion();
                 return;
             }
 
             wrongAccusations++;
+            AudioManager.Play(Sfx.Wrong);
             UnitType accused = (UnitType)selectedUnit;
             // Petunjuk berbeda: unit yang memang tidak normal (korban di hilir) vs unit yang normal.
             string hint = Case.units[selectedUnit].IsAbnormal
@@ -299,6 +304,7 @@ namespace WTP.Gameplay.Detektif
             if (fixOrder[buttonIndex] != Case.correctFix)
             {
                 wrongFixes++;
+                AudioManager.Play(Sfx.Wrong);
                 fixButtons[buttonIndex].interactable = false;
                 statusText.text = $"Itu tidak mengatasi penyebabnya (-{WrongFixCost} skor). Coba pilihan lain.";
                 return;
@@ -313,6 +319,9 @@ namespace WTP.Gameplay.Detektif
             topPanel.SetActive(false);
             bottomPanel.SetActive(false);
             plant.SetWorkingUnitCount(AllUnits);   // air kembali jernih pelan-pelan
+            plant.Effects.StopAll();
+            plant.Effects.CelebrateAll();
+            AudioManager.Play(Sfx.Correct);
 
             int extraInspections = Mathf.Max(0, inspected.Count - FreeInspections);
             int score = Mathf.Max(MinScore, MaxScore

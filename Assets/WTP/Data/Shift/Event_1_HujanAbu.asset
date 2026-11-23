@@ -21,6 +21,7 @@ MonoBehaviour:
   satisfactionDrain: 0
   hideReadings: 0
   smoke: 0
+  ash: 1
   isInspection: 0
   inspectionText: 
   acceptLabel: Turuti

@@ -1,6 +1,7 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using WTP.Audio;
 
 namespace WTP.Gameplay.Belajar
 {
@@ -68,6 +69,7 @@ namespace WTP.Gameplay.Belajar
             if (sludge < WasteThreshold)
             {
                 score -= 10;
+                AudioManager.Play(Sfx.Wrong);
                 statusText.text = "Lumpur masih tipis, yang terbuang malah air bersih! (-10)";
             }
             else
@@ -75,6 +77,7 @@ namespace WTP.Gameplay.Belajar
                 statusText.text = "Katup dibuka, lumpur dibuang.";
             }
             draining = drainTime;
+            AudioManager.Play(Sfx.Splash);
         }
 
         void Update()
@@ -91,6 +94,7 @@ namespace WTP.Gameplay.Belajar
                 statusText.text = "Hujan! Air lebih keruh, lumpur cepat menumpuk.";
             }
             float rate = elapsed < rainUntil ? rainRate : normalRate;
+            Effects.SetSettling(elapsed < rainUntil ? 1f : 0.5f);   // butiran lumpur turun di bak AR
 
             if (draining > 0f)
             {
@@ -107,6 +111,7 @@ namespace WTP.Gameplay.Belajar
             if (sludge >= 1f)
             {
                 score -= 15;
+                AudioManager.Play(Sfx.Wrong);
                 sludge = 0.4f;   // lumpur luber terbawa keluar ke filter
                 statusText.text = "Lumpur penuh dan terbawa ke filter, air keruh lolos! (-15)";
             }

@@ -5,6 +5,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
+using WTP.Audio;
 
 namespace WTP.AR
 {
@@ -65,6 +66,7 @@ namespace WTP.AR
                 : pose.rotation;
 
             PlacedPlant = Instantiate(plantPrefab, pose.position, rotation);
+            AudioManager.Play(Sfx.Place);
 
             if (hidePlanesAfterPlacement) SetPlanesActive(false);
             PlantPlaced?.Invoke(PlacedPlant);

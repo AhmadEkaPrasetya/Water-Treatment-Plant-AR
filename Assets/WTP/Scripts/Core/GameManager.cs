@@ -133,7 +133,11 @@ namespace WTP.Core
             SaveSystem.Data.SetStars(levelIndex, stars);
             BadgeManager.Evaluate();   // mis. Penjaga Intake (level 1 bintang 3)
             SaveSystem.Save();
-            if (Plant != null) Plant.SetWorkingUnitCount(CompletedLevelCount);
+            if (Plant != null)
+            {
+                Plant.SetWorkingUnitCount(CompletedLevelCount);
+                Plant.Effects.Celebrate((UnitType)levelIndex);   // kilau di unit yang baru diperbaiki
+            }
             SetState(GameState.Result);
         }
     }

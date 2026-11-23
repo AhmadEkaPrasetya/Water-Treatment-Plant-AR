@@ -30,6 +30,8 @@ namespace WTP.Gameplay.Detektif
         [Tooltip("Kekeruhan air (NTU) di unit penyebab dan sesudahnya, untuk warna air di AR. " +
                  "Isi 2 kalau masalahnya tidak membuat air keruh (mis. klorin berlebih).")]
         public float symptomTurbidity = 100f;
+        [Tooltip("Tampilkan hujan abu karhutla di atas WTP AR (kasus yang penyebabnya dari hulu)")]
+        public bool ashFall;
 
         [Header("Perbaikan")]
         [Tooltip("3 pilihan cara memperbaiki (diacak saat tampil)")]

@@ -6234,6 +6234,8 @@ GameObject:
   - component: {fileID: 1055273942}
   - component: {fileID: 1055273944}
   - component: {fileID: 1055273943}
+  - component: {fileID: 1055273946}
+  - component: {fileID: 1055273945}
   m_Layer: 0
   m_Name: SettingsPanel
   m_TagString: Untagged
@@ -6299,6 +6301,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1055273941}
   m_CullTransparentMesh: 1
+--- !u!114 &1055273945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1055273941}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8b0cb254ff0ec04997cc3b6ea518235, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WTP.UI.PanelTransition
+  duration: 0.2
+  startScale: 0.92
+--- !u!225 &1055273946
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1055273941}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1066479997
 GameObject:
   m_ObjectHideFlags: 0
@@ -6667,6 +6695,8 @@ GameObject:
   - component: {fileID: 1102160589}
   - component: {fileID: 1102160591}
   - component: {fileID: 1102160590}
+  - component: {fileID: 1102160593}
+  - component: {fileID: 1102160592}
   m_Layer: 5
   m_Name: LeaderboardPanel
   m_TagString: Untagged
@@ -6732,6 +6762,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1102160588}
   m_CullTransparentMesh: 1
+--- !u!114 &1102160592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1102160588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8b0cb254ff0ec04997cc3b6ea518235, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WTP.UI.PanelTransition
+  duration: 0.2
+  startScale: 0.92
+--- !u!225 &1102160593
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1102160588}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1111992070
 GameObject:
   m_ObjectHideFlags: 0
@@ -7174,6 +7230,8 @@ GameObject:
   - component: {fileID: 1265388164}
   - component: {fileID: 1265388166}
   - component: {fileID: 1265388165}
+  - component: {fileID: 1265388168}
+  - component: {fileID: 1265388167}
   m_Layer: 5
   m_Name: BadgePanel
   m_TagString: Untagged
@@ -7239,6 +7297,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1265388163}
   m_CullTransparentMesh: 1
+--- !u!114 &1265388167
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1265388163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8b0cb254ff0ec04997cc3b6ea518235, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WTP.UI.PanelTransition
+  duration: 0.2
+  startScale: 0.92
+--- !u!225 &1265388168
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1265388163}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1277494517
 GameObject:
   m_ObjectHideFlags: 0
@@ -11898,6 +11982,7 @@ GameObject:
   - component: {fileID: 1736489594}
   - component: {fileID: 1736489600}
   - component: {fileID: 1736489599}
+  - component: {fileID: 1736489602}
   m_Layer: 0
   m_Name: MainMenu
   m_TagString: Untagged
@@ -12122,6 +12207,18 @@ MonoBehaviour:
   - {fileID: 274158887}
   - {fileID: 1413610322}
   closeButton: {fileID: 1117365210}
+--- !u!225 &1736489602
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1736489593}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1757861882
 GameObject:
   m_ObjectHideFlags: 0

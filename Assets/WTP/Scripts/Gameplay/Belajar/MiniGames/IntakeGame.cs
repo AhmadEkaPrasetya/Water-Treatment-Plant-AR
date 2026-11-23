@@ -3,6 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using WTP.Audio;
 
 namespace WTP.Gameplay.Belajar
 {
@@ -102,6 +103,7 @@ namespace WTP.Gameplay.Belajar
                 int index = trash.IndexOf(hit.transform);
                 if (index < 0) continue;
                 removed++;
+                AudioManager.Play(Sfx.Splash);
                 statusText.text = "Bagus! Sampah dibuang.";
                 RemoveAt(index);
                 UpdateCounter();

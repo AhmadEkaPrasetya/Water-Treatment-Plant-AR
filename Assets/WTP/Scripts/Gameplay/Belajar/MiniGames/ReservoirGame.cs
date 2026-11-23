@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using WTP.Audio;
 
 namespace WTP.Gameplay.Belajar
 {
@@ -194,6 +195,7 @@ namespace WTP.Gameplay.Belajar
             {
                 running = false;
                 statusText.text = "Waktu habis! Air belum sampai ke kota.";
+                AudioManager.Play(Sfx.Wrong);
                 StartCoroutine(FinishLater(30));
             }
         }
@@ -202,6 +204,7 @@ namespace WTP.Gameplay.Belajar
         {
             running = false;
             statusText.text = "Tersambung! Air bersih mengalir ke Kota Tirtapura.";
+            AudioManager.Play(Sfx.Pour);
             Unit.SetWaterLevel(1f);
             int score = Mathf.RoundToInt(Mathf.Lerp(100f, 50f, Mathf.InverseLerp(20f, timeLimit, elapsed)));
             yield return FinishLater(score);

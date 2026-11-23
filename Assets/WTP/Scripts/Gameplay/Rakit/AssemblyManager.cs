@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using WTP.Audio;
 using WTP.Core;
 using WTP.Plant;
 using WTP.Progress;
@@ -261,6 +262,7 @@ namespace WTP.Gameplay.Rakit
             CardData card = selected.Data;
             if (card.cost > budgetLeft)
             {
+                AudioManager.Play(Sfx.Wrong);
                 statusText.text = $"Anggaran tidak cukup! {card.displayName} butuh {Money(card.cost)}, sisa {Money(budgetLeft)}.";
                 return;
             }
@@ -271,7 +273,11 @@ namespace WTP.Gameplay.Rakit
             selected.gameObject.SetActive(false);
             selected = null;
             infoText.text = "";
-            if (card.kind == CardKind.Trap) trapUsed = true;
+            if (card.kind == CardKind.Trap)
+            {
+                trapUsed = true;
+                AudioManager.Play(Sfx.Wrong, 0.6f);   // celetukan Pak Wacana: kartu jebakan
+            }
             statusText.text = !string.IsNullOrEmpty(card.placedLine)
                 ? card.placedLine
                 : $"{card.displayName} dipasang di slot {index + 1}.";
@@ -335,6 +341,7 @@ namespace WTP.Gameplay.Rakit
                 WTPUnit unit = plant.Units[i];
                 unit.SetBroken(!steps[i].ok);
                 unit.SetClarity(new WaterQuality(steps[i].turbidity).Clarity);
+                AudioManager.Play(steps[i].ok ? Sfx.Splash : Sfx.Wrong);
 
                 yield return new WaitForSeconds(StepDelay);
                 slots[i].SetLook(steps[i].ok ? UnitSlot.Look.Good : UnitSlot.Look.Bad);
@@ -347,6 +354,8 @@ namespace WTP.Gameplay.Rakit
         IEnumerator Success()
         {
             plant.SetWorkingUnitCount(FlowSimulation.SlotCount);   // kota menyala
+            plant.Effects.CelebrateAll();
+            AudioManager.Play(Sfx.Pour);
             statusText.text = "Air bersih sampai ke Kota Tirtapura!";
             yield return new WaitForSeconds(1.5f);
 
@@ -382,6 +391,7 @@ namespace WTP.Gameplay.Rakit
         {
             failedRuns++;
             simulating = false;
+            AudioManager.Play(Sfx.Fail);
             topPanel.SetActive(false);
             bottomPanel.SetActive(false);
 

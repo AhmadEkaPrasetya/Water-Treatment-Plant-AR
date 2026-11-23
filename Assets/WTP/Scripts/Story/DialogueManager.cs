@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using WTP.Audio;
 
 namespace WTP.Story
 {
@@ -93,10 +94,17 @@ namespace WTP.Story
             float shown = 0f;
             lineText.maxVisibleCharacters = 0;
 
+            int lastTick = 0;
             while (shown < total)
             {
                 shown += typingSpeed * Time.unscaledDeltaTime; // tetap jalan walau game dijeda
                 lineText.maxVisibleCharacters = Mathf.Min(total, (int)shown);
+                // Bunyi "tik" halus tiap 3 huruf (tiap huruf terlalu ramai).
+                if ((int)shown - lastTick >= 3)
+                {
+                    lastTick = (int)shown;
+                    AudioManager.Play(Sfx.Tick, 0.5f);
+                }
                 yield return null;
             }
             CompleteTyping();

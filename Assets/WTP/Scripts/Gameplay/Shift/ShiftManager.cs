@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using WTP.Audio;
 using WTP.Core;
 using WTP.Plant;
 using WTP.Progress;
@@ -26,6 +27,7 @@ namespace WTP.Gameplay.Shift
         const float FirstEventTime = 20f;
         const float EventSpacing = 32f;
         const float ArRefreshInterval = 0.25f;
+        const float LowSatisfaction = 30f;   // di bawah ini bunyi peringatan
 
         static readonly Color SafeColor = new Color(0.45f, 0.9f, 0.5f);
         static readonly Color DangerColor = new Color(1f, 0.45f, 0.4f);
@@ -95,6 +97,7 @@ namespace WTP.Gameplay.Shift
         float score;
         float pumpOffTimer;
         float arTimer;
+        float warningTimer;
 
         // Jadwal event: event ke-i mulai di startTimes[i].
         readonly List<ShiftEvent> schedule = new List<ShiftEvent>();
@@ -160,6 +163,8 @@ namespace WTP.Gameplay.Shift
 
         void HideAll()
         {
+            AudioManager.PlayMusic(Music.Play);
+            if (plant != null) plant.Effects.StopAll();
             startPanel.SetActive(false);
             topPanel.SetActive(false);
             bottomPanel.SetActive(false);
@@ -228,6 +233,7 @@ namespace WTP.Gameplay.Shift
             topPanel.SetActive(true);
             bottomPanel.SetActive(true);
             GameManager.Instance.SetState(GameState.Playing);
+            AudioManager.PlayMusic(Music.Shift);
             running = true;
             RefreshUI();
         }
@@ -274,6 +280,14 @@ namespace WTP.Gameplay.Shift
                 RefreshAR();
             }
 
+            // Bunyi "tit" berulang kalau kepuasan warga tinggal sedikit.
+            warningTimer -= dt;
+            if (sim.Satisfaction < LowSatisfaction && warningTimer <= 0f)
+            {
+                warningTimer = 1.5f;
+                AudioManager.Play(Sfx.Warning);
+            }
+
             if (sim.Satisfaction <= 0f) End(false);
             else if (elapsed >= ShiftSeconds) End(true);
         }
@@ -287,6 +301,7 @@ namespace WTP.Gameplay.Shift
                 active.Add(e);
                 endTimes[e] = elapsed + e.duration;
                 eventText.text = $"<color=#FFB347>PERINGATAN: {e.title}!</color> {e.warning}";
+                AudioManager.Play(Sfx.Alarm);
                 if (e.isInspection) ShowInspection(e);
             }
 
@@ -304,9 +319,10 @@ namespace WTP.Gameplay.Shift
             sim.demandMultiplier = 1f;
             sim.pumpCapMultiplier = 1f;
             sim.extraSatisfactionDrain = 0f;
-            bool smoke = false;
+            bool smoke = false, ash = false;
             foreach (ShiftEvent e in active)
             {
+                ash |= e.ash;
                 sim.turbidityMultiplier *= e.turbidityMultiplier;
                 sim.demandMultiplier *= e.demandMultiplier;
                 sim.pumpCapMultiplier *= e.pumpCapMultiplier;
@@ -314,6 +330,7 @@ namespace WTP.Gameplay.Shift
                 smoke |= e.smoke;
             }
             SetSmoke(smoke);
+            plant.Effects.SetAsh(ash);
         }
 
         bool ReadingsHidden
@@ -423,6 +440,8 @@ namespace WTP.Gameplay.Shift
             }
             plant.GetUnit(UnitType.Reservoir).SetWaterLevel(sim.Reservoir / 100f);
             plant.SetCityLevel(sim.Satisfaction / 100f);
+            // Klorin kurang -> kuman terlihat di bak Desinfeksi (petunjuk saat sensor tertutup asap).
+            plant.Effects.SetGerms(1f - Mathf.Clamp01(sim.Chlorine / WaterQuality.MinSafeChlorine));
         }
 
         void SetSmoke(bool on)
@@ -444,6 +463,9 @@ namespace WTP.Gameplay.Shift
             if (!running) return;
             running = false;
             SetSmoke(false);
+            plant.Effects.StopAll();
+            if (survived) plant.Effects.CelebrateAll();
+            AudioManager.PlayMusic(Music.Play);   // musik tegang selesai bersama shift
             inspectionPanel.SetActive(false);
             topPanel.SetActive(false);
             bottomPanel.SetActive(false);

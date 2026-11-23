@@ -26,6 +26,16 @@ namespace WTP.Plant
 
         public IReadOnlyList<WTPUnit> Units => units;
 
+        /// <summary>Efek partikel WTP (flok, endapan, kuman, abu, kilau).</summary>
+        public PlantEffects Effects { get; private set; }
+
+        void Awake()
+        {
+            // Prefab lama yang belum punya PlantEffects tetap jalan (partikel tanpa material khusus).
+            Effects = GetComponent<PlantEffects>();
+            if (Effects == null) Effects = gameObject.AddComponent<PlantEffects>();
+        }
+
         public WTPUnit GetUnit(UnitType type) => units[(int)type];
 
         /// <summary>Nyalakan lampu kota sebanyak 'level' (0..1) bagian, dipakai Operator Shift untuk kepuasan warga.</summary>

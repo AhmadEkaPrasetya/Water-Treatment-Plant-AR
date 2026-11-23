@@ -2366,6 +2366,7 @@ GameObject:
   - component: {fileID: 3812290283938383398}
   - component: {fileID: 7424948786033349304}
   - component: {fileID: 8678941756643323225}
+  - component: {fileID: 5292176073161467339}
   m_Layer: 0
   m_Name: WTP_Plant
   m_TagString: Untagged
@@ -2424,6 +2425,19 @@ MonoBehaviour:
   - {fileID: 2863320883369641059}
   - {fileID: 4745361161484843063}
   cityLights: {fileID: 2134307372585899281}
+--- !u!114 &5292176073161467339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3340122741225661143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06ddc2f4a9b72ba4b922040ad0777f2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WTP.Plant.PlantEffects
+  particleMaterial: {fileID: 2100000, guid: cc75b12742f7ae343962d078689100e6, type: 2}
 --- !u!1 &3380585071851916255
 GameObject:
   m_ObjectHideFlags: 0

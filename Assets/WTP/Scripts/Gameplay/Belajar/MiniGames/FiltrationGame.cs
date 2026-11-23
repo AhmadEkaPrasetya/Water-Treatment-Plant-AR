@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using WTP.Audio;
 
 namespace WTP.Gameplay.Belajar
 {
@@ -84,11 +85,13 @@ namespace WTP.Gameplay.Belajar
             if (layer != placed)
             {
                 mistakes++;
+                AudioManager.Play(Sfx.Wrong);
                 feedbackText.text = "Belum tepat. Ingat: makin ke bawah, butirannya makin besar.";
                 StartCoroutine(FlashWrong(cards[cardIndex]));
                 return;
             }
 
+            AudioManager.Play(Sfx.Correct);
             cards[cardIndex].image.color = doneColor;
             cards[cardIndex].interactable = false;
             if (layer < modelLayers.Count) modelLayers[layer].SetActive(true);

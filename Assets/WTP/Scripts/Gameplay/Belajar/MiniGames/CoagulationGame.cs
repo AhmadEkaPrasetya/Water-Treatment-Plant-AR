@@ -2,6 +2,7 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using WTP.Audio;
 using WTP.Plant;
 
 namespace WTP.Gameplay.Belajar
@@ -68,6 +69,7 @@ namespace WTP.Gameplay.Belajar
             attemptsText.text = $"Percobaan {attempts}/{MaxAttempts}";
             int dose = Dose;
             resultText.text = "Mengaduk...";
+            AudioManager.Play(Sfx.Pour);
 
             // Hitung hasil: seberapa jernih air di gelas setelah flok mengendap.
             int diff = dose - optimalDose;
@@ -89,6 +91,7 @@ namespace WTP.Gameplay.Belajar
             // pH turun kira-kira 0.02 per mg/L tawas (tawas bersifat asam).
             float pH = 7.4f - dose * 0.02f;
             bool success = Mathf.Abs(diff) <= Tolerance;
+            AudioManager.Play(success ? Sfx.Correct : Sfx.Wrong);
             if (success)
                 resultText.text = $"Pas! Flok terbentuk dan mengendap. pH {pH:0.0}";
             else if (diff < 0)

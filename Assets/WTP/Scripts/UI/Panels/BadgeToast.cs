@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using WTP.Audio;
 using WTP.Progress;
 
 namespace WTP.UI.Panels
@@ -40,6 +41,7 @@ namespace WTP.UI.Panels
                 titleText.text = $"Badge baru: {info.title}!";
                 descriptionText.text = info.description;
                 panel.SetActive(true);
+                AudioManager.Play(Sfx.Badge);
                 yield return new WaitForSecondsRealtime(showSeconds);   // tetap jalan walau game dijeda
                 panel.SetActive(false);
                 yield return new WaitForSecondsRealtime(0.3f);

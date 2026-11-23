@@ -212,6 +212,9 @@ namespace WTP.EditorTools
             // --- alas tanah
             Box(content, "Ground", new Vector3(0.6f, -0.075f, 0.9f), new Vector3(16.4f, 0.15f, 9.8f), LoadMat("Ground"));
 
+            // --- efek partikel (flok, endapan, kuman, abu, kilau)
+            WTPPolishBuilder.AddEffects(root);
+
             PrefabUtility.SaveAsPrefabAsset(root, PrefabPath);
             Object.DestroyImmediate(root);
             Debug.Log("[WTP] Prefab tersimpan: " + PrefabPath);

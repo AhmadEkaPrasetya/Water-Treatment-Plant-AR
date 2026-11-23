@@ -17,10 +17,13 @@ namespace WTP.Gameplay.Belajar
         public event Action<int> Finished;
 
         protected WTPUnit Unit { get; private set; }
+        /// <summary>Efek partikel WTP (flok, endapan, kuman). Otomatis dimatikan saat mini-game selesai.</summary>
+        protected PlantEffects Effects { get; private set; }
 
         public void Begin(WTPUnit unit)
         {
             Unit = unit;
+            Effects = unit.GetComponentInParent<PlantController>().Effects;
             gameObject.SetActive(true);
             OnBegin();
         }
@@ -29,10 +32,15 @@ namespace WTP.Gameplay.Belajar
         protected abstract void OnBegin();
 
         /// <summary>Hentikan paksa (mis. WTP ditaruh ulang). Turunan boleh override untuk bersih-bersih.</summary>
-        public virtual void Cancel() => gameObject.SetActive(false);
+        public virtual void Cancel()
+        {
+            if (Effects != null) Effects.StopAll();
+            gameObject.SetActive(false);
+        }
 
         protected void Finish(int score)
         {
+            if (Effects != null) Effects.StopAll();
             gameObject.SetActive(false);
             Finished?.Invoke(Mathf.Clamp(score, 0, 100));
         }
